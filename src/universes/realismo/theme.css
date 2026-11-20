@@ -1,0 +1,198 @@
+/* REALISMO — preto e cinza, luz e sombra, textura de fotografia. Movimento lento e suave. Paleta e fontes provisórias (D-36/D-37). */
+:root [data-theme="realismo"] {
+  --bg: #0d0e10;
+  --bg2: #17191c;
+  --ink: #e9e7e2;
+  --ink2: #b9b7b1;
+  --accent: #c9c3b6;
+  --accent2: #7d8a93;
+  --accent-ink: #0d0e10;
+  --line: rgba(233, 231, 226, 0.22);
+  --font-display: var(--f-realismo-display), "Cormorant Garamond", Georgia, serif;
+  --font-body: var(--f-realismo-body), system-ui, sans-serif;
+  --title-tt: none;
+  --title-ls: -0.01em;
+  --title-style: italic;
+  --title-w: 300;
+  --title-shadow: 0 0 48px rgba(233, 231, 226, 0.2);
+  --radius: 2px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --veil-bg: radial-gradient(circle at 50% 40%, #2a2c2f, #0b0c0d 70%);
+  --veil-ink: #e9e7e2;
+  --veil-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Atmosfera: shader Silk em tela cheia ---- */
+.r-shader {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.r-fog {
+  position: absolute;
+  width: 90vmax;
+  height: 90vmax;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(200, 205, 210, 0.15), transparent 68%);
+}
+.r-fog--a { left: -30vmax; top: -20vmax; animation: r-drift 38s ease-in-out infinite alternate; }
+.r-fog--b { right: -34vmax; top: 10vmax; animation: r-drift 46s ease-in-out infinite alternate-reverse; }
+.r-fog--c { left: 10vmax; bottom: -50vmax; animation: r-drift 54s ease-in-out infinite alternate; }
+.r-spot {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: 80vmax;
+  height: 80vmax;
+  margin: -40vmax 0 0 -40vmax;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.11), transparent 60%);
+}
+.r-dust {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #e9e7e2;
+  opacity: 0;
+  animation: r-float 16s ease-in-out infinite;
+  animation-delay: calc(var(--d, 0) * -1.6s);
+}
+.r-grain {
+  position: absolute;
+  inset: -50%;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: r-grain 1.2s steps(6) infinite;
+}
+.r-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 42%, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+}
+@keyframes r-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(7vmax, 4vmax, 0) scale(1.12); }
+}
+@keyframes r-float {
+  0%, 100% { opacity: 0; transform: translateY(0); }
+  30%, 70% { opacity: 0.55; }
+  50% { transform: translateY(-40px); }
+}
+@keyframes r-grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-4%, 3%); }
+  40% { transform: translate(3%, -5%); }
+  60% { transform: translate(-6%, -2%); }
+  80% { transform: translate(5%, 4%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---- Portal: disco com um olho em névoa; as pálpebras se abrem no preview ---- */
+.portal[data-theme="realismo"] .portal__scene {
+  background: radial-gradient(circle at 50% 38%, #3c3f43, #0b0c0d 78%);
+}
+.pr-fog {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  bottom: -10%;
+  height: 60%;
+  background: radial-gradient(closest-side, rgba(220, 224, 228, 0.3), transparent 75%);
+  animation: r-drift 18s ease-in-out infinite alternate;
+}
+.pr-iris {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 62%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  scale: 0.8;
+  border-radius: 50%;
+  background: radial-gradient(circle, #111 0 22%, #7e8184 24%, #b9bcbe 46%, #4a4d50 66%, #1a1b1d 70%);
+  filter: brightness(0.55);
+  transition:
+    scale 1.2s var(--ease),
+    filter 1.2s ease;
+}
+.pr-pupil {
+  position: absolute;
+  inset: 34%;
+  border-radius: 50%;
+  background: #050505;
+  transition: scale 1s var(--ease);
+}
+.pr-glint {
+  position: absolute;
+  left: 30%;
+  top: 24%;
+  width: 14%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.85;
+}
+.pr-lid {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  height: 52%;
+  background: #0b0c0d;
+  transition: translate 1.2s var(--ease);
+}
+.pr-lid--t { top: 0; border-radius: 0 0 50% 50% / 0 0 24% 24%; translate: 0 18%; }
+.pr-lid--b { bottom: 0; border-radius: 50% 50% 0 0 / 24% 24% 0 0; translate: 0 -18%; }
+.pr-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.portal[data-theme="realismo"][data-state="preview"] .pr-lid--t { translate: 0 -78%; }
+.portal[data-theme="realismo"][data-state="preview"] .pr-lid--b { translate: 0 78%; }
+.portal[data-theme="realismo"][data-state="preview"] .pr-iris { scale: 1; filter: brightness(1.08); }
+.portal[data-theme="realismo"][data-state="opening"] .pr-lid--t { translate: 0 -100%; }
+.portal[data-theme="realismo"][data-state="opening"] .pr-lid--b { translate: 0 100%; }
+.portal[data-theme="realismo"][data-state="opening"] .pr-iris { scale: 2.4; filter: brightness(1.3); }
+.portal[data-theme="realismo"][data-state="opening"] .pr-pupil { scale: 1.6; }
+
+/* ---- Página do universo ---- */
+.hero[data-u="realismo"] {
+  justify-items: start;
+}
+.hero[data-u="realismo"] .hero__kicker {
+  letter-spacing: 0.34em;
+}
+.hero[data-u="realismo"] .hero__title {
+  font-size: clamp(3.4rem, 15vw, 12.5rem);
+  animation: r-focus 1.8s ease both;
+  animation-delay: 0.3s;
+}
+.hero[data-u="realismo"]::after {
+  content: "";
+  width: min(280px, 50%);
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.hero[data-u="realismo"] .hero__lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink2);
+}
+@keyframes r-focus {
+  from { opacity: 0; filter: blur(16px); }
+}
+
+/* ---- Véu ---- */
+.veil[data-theme="realismo"][data-phase="covering"] .veil__name {
+  animation: vn-real 1s 0.25s ease forwards;
+}
+@keyframes vn-real {
+  from { opacity: 0; filter: blur(18px); }
+  to { opacity: 1; filter: blur(0); }
+}

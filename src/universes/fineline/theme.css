@@ -1,0 +1,95 @@
+/* FINE LINE — traço finíssimo, preto quase puro, muito respiro. Paleta provisória (D-37). */
+:root [data-theme="fineline"] {
+  --bg: #0b0b0c;
+  --bg2: #141416;
+  --ink: #f1f1ef;
+  --ink2: #a4a4a8;
+  --accent: #ececea;
+  --accent2: #8a8a90;
+  --accent-ink: #0b0b0c;
+  --line: rgba(241, 241, 239, 0.22);
+  --font-display: var(--f-fineline-display), "Trajan Pro", Georgia, serif;
+  --font-body: var(--f-base), system-ui, sans-serif;
+  --title-tt: uppercase;
+  --title-ls: 0.06em;
+  --title-style: normal;
+  --title-w: 400;
+  --title-shadow: none;
+  --radius: 0px;
+  --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --veil-bg: #0b0b0c;
+  --veil-ink: #f1f1ef;
+  --veil-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Atmosfera ---- */
+.f-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(80vh, 56vw);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  color: var(--ink);
+  opacity: 0.35;
+}
+.f-ring circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: f-draw 5s var(--ease) forwards;
+}
+.f-vline {
+  position: absolute;
+  left: 50%;
+  top: 6%;
+  bottom: 6%;
+  width: 1px;
+  background: linear-gradient(transparent, rgba(241, 241, 239, 0.4), transparent);
+}
+.f-star {
+  position: absolute;
+  width: 14px;
+  aspect-ratio: 1;
+  background: var(--ink);
+  clip-path: polygon(50% 0, 56% 44%, 100% 50%, 56% 56%, 50% 100%, 44% 56%, 0 50%, 44% 44%);
+  opacity: 0.5;
+  animation: f-twinkle 4.6s ease-in-out infinite;
+  animation-delay: calc(var(--d, 0) * -1s);
+}
+@keyframes f-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes f-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.7); }
+  50% { opacity: 0.75; transform: scale(1); }
+}
+
+/* ---- Portal: o lírio, sem disco desenhado ---- */
+
+/* ---- Página do universo ---- */
+.hero[data-u="fineline"] .hero__kicker {
+  letter-spacing: 0.34em;
+}
+.hero[data-u="fineline"] .hero__title {
+  font-size: clamp(2.6rem, 10vw, 8.5rem);
+  letter-spacing: 0.05em;
+}
+.hero[data-u="fineline"] .hero__lead {
+  color: var(--ink2);
+  font-weight: 300;
+}
+.hero[data-u="fineline"]::after {
+  content: "";
+  width: min(240px, 50%);
+  height: 1px;
+  background: linear-gradient(90deg, var(--ink), transparent);
+}
+
+/* ---- Véu ---- */
+.veil[data-theme="fineline"][data-phase="covering"] .veil__name {
+  animation: vn-fine 0.9s 0.25s ease forwards;
+}
+@keyframes vn-fine {
+  from { opacity: 0; letter-spacing: 0.3em; }
+  to { opacity: 1; letter-spacing: 0.06em; }
+}

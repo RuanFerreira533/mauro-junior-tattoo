@@ -1,0 +1,183 @@
+/* ANIME — energia, cor chapada, contorno forte, movimento com overshoot. Paleta e fontes provisórias (D-36/D-37). */
+:root [data-theme="anime"] {
+  --bg: #150b36;
+  --bg2: #21114f;
+  --ink: #ffffff;
+  --ink2: #d6ccff;
+  --accent: #ff3d81;
+  --accent2: #2de2e6;
+  --accent-ink: #150b36;
+  --line: rgba(255, 255, 255, 0.35);
+  --font-display: var(--f-anime-display), Impact, "Arial Black", sans-serif;
+  --font-body: var(--f-anime-body), "Trebuchet MS", sans-serif;
+  --title-tt: uppercase;
+  --title-ls: 0.03em;
+  --title-style: italic;
+  --title-w: 400;
+  --title-shadow: 4px 4px 0 var(--accent);
+  --radius: 0px;
+  --ease: cubic-bezier(0.2, 1.5, 0.4, 1);
+  --veil-bg: radial-gradient(circle, rgba(255, 255, 255, 0.28) 2px, transparent 2.6px) 0 0 / 22px 22px, #ff3d81;
+  --veil-ink: #ffffff;
+  --veil-ease: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ---- Atmosfera: paisagem de anime ao fundo (D-52) ---- */
+.a-sky {
+  position: absolute;
+  inset: -6%;
+  background: url(/universos/anime/bg.webp) center 65% / cover no-repeat;
+  animation: a-pan 60s ease-in-out infinite alternate;
+}
+/* escurece o céu: texto branco precisa de contraste AA */
+.a-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 8, 40, 0.72) 0%, rgba(14, 8, 40, 0.6) 55%, rgba(14, 8, 40, 0.82) 100%);
+}
+@keyframes a-pan {
+  from { transform: scale(1) translateX(0); }
+  to { transform: scale(1.08) translateX(-2%); }
+}
+
+.a-burst {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 150vmax;
+  height: 150vmax;
+  margin: -75vmax 0 0 -75vmax;
+  background: repeating-conic-gradient(rgba(255, 255, 255, 0.1) 0 2.2deg, transparent 2.2deg 7.5deg);
+  -webkit-mask-image: radial-gradient(circle, transparent 5%, #000 22%, transparent 56%);
+  mask-image: radial-gradient(circle, transparent 5%, #000 22%, transparent 56%);
+  animation: a-spin 90s linear infinite;
+}
+.a-dots {
+  position: absolute;
+  inset: -28px;
+  background: radial-gradient(circle, var(--accent) 2px, transparent 2.6px) 0 0 / 28px 28px;
+  opacity: 0.13;
+  -webkit-mask-image: linear-gradient(200deg, transparent 15%, #000 95%);
+  mask-image: linear-gradient(200deg, transparent 15%, #000 95%);
+  animation: a-drift 7s linear infinite;
+}
+.a-slash {
+  position: absolute;
+  opacity: 0.28;
+  animation: a-slash 9s ease-in-out infinite alternate;
+}
+.a-slash--1 {
+  left: -8vw;
+  top: 64vh;
+  width: 56vw;
+  height: 11vh;
+  background: var(--accent);
+  clip-path: polygon(0 0, 100% 30%, 96% 100%, 0 70%);
+}
+.a-slash--2 {
+  right: -10vw;
+  top: 10vh;
+  width: 44vw;
+  height: 7vh;
+  background: var(--accent2);
+  clip-path: polygon(6% 0, 100% 0, 100% 70%, 0 100%);
+  animation-delay: -3s;
+  animation-direction: alternate-reverse;
+}
+.a-slash--3 {
+  left: 22vw;
+  bottom: -3vh;
+  width: 36vw;
+  height: 5vh;
+  background: #ffd23f;
+  clip-path: polygon(0 20%, 100% 0, 94% 100%, 4% 100%);
+  animation-delay: -6s;
+}
+.a-spark {
+  position: absolute;
+  width: calc(var(--s, 1) * 26px);
+  aspect-ratio: 1;
+  background: #fff;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  animation: a-twinkle 2.4s ease-in-out infinite;
+  animation-delay: calc(var(--d, 0) * -1s);
+}
+.a-spark:nth-child(3n) {
+  background: var(--accent2);
+}
+.a-spark:nth-child(3n + 1) {
+  background: #ffd23f;
+}
+@keyframes a-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes a-drift {
+  to { transform: translate(28px, 28px); }
+}
+@keyframes a-slash {
+  from { transform: translateX(-3vw); }
+  to { transform: translateX(4vw); }
+}
+@keyframes a-twinkle {
+  0%, 100% { transform: scale(0.35) rotate(0deg); opacity: 0.2; }
+  50% { transform: scale(1) rotate(45deg); opacity: 1; }
+}
+
+/* ---- Página do universo ---- */
+.hero[data-u="anime"]::before {
+  content: "";
+  position: absolute;
+  right: -4%;
+  top: 4%;
+  width: min(48vmin, 520px);
+  aspect-ratio: 1;
+  background: var(--accent2);
+  opacity: 0.9;
+  clip-path: polygon(50% 0, 58% 22%, 78% 6%, 74% 30%, 98% 28%, 80% 46%, 100% 62%, 76% 64%, 86% 90%, 62% 78%, 50% 100%, 42% 78%, 18% 92%, 26% 66%, 0 60%, 22% 46%, 4% 26%, 28% 30%, 24% 6%, 42% 22%);
+  animation: a-spin 50s linear infinite;
+  z-index: -1;
+}
+.hero[data-u="anime"] .hero__kicker {
+  display: inline-block;
+  justify-self: start;
+  padding: 0.3em 1.1em;
+  background: var(--accent2);
+  color: var(--accent-ink);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  transform: skew(-10deg);
+}
+.hero[data-u="anime"] .hero__title {
+  transform: skewX(-5deg);
+  transform-origin: left bottom;
+}
+.hero[data-u="anime"] .hero__lead {
+  position: relative;
+  padding: 1rem 1.4rem;
+  background: #fff;
+  color: #1b1147;
+  border: 4px solid #1b1147;
+  box-shadow: 6px 6px 0 var(--accent);
+}
+.hero[data-u="anime"] .hero__lead::after {
+  content: "";
+  position: absolute;
+  left: 2rem;
+  bottom: -22px;
+  border: 11px solid transparent;
+  border-top: 18px solid #1b1147;
+  border-bottom: 0;
+}
+
+/* ---- Véu ---- */
+.veil[data-theme="anime"] .veil__name {
+  transform: rotate(-3deg);
+  text-shadow: 6px 6px 0 var(--accent2);
+}
+.veil[data-theme="anime"][data-phase="covering"] .veil__name {
+  animation: vn-anime 0.5s 0.3s cubic-bezier(0.2, 1.6, 0.4, 1) forwards;
+}
+@keyframes vn-anime {
+  from { opacity: 0; transform: scale(2.6) rotate(-10deg); }
+  to { opacity: 1; transform: scale(1) rotate(-3deg); }
+}

@@ -1,0 +1,173 @@
+/* Carrossel squeeze: cores e fonte vêm dos tokens do universo (--accent, --ink, --ink2, --bg2, --font-body). */
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-inline: clamp(16px, 4vw, 48px);
+  container-type: inline-size;
+  font-family: var(--font-body);
+}
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.arrow {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius, 6px);
+  background: var(--sq-fill);
+  color: var(--sq-on-fill);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.arrow:hover {
+  opacity: 0.85;
+}
+.arrow:focus-visible,
+.action:focus-visible,
+.card:focus-visible {
+  outline: 3px solid var(--sq-fill);
+  outline-offset: 3px;
+}
+.viewport {
+  width: 100%;
+  height: var(--sq-h);
+  overflow: hidden;
+}
+.strip {
+  display: flex;
+  width: max-content;
+  height: 100%;
+}
+.card {
+  position: relative;
+  isolation: isolate;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--bg2);
+  overflow: hidden;
+  cursor: pointer;
+}
+.pic {
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  display: block;
+  width: var(--sq-hero);
+  min-width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-50%);
+}
+.overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 1rem 1rem;
+  background-image: linear-gradient(to top, rgb(0 0 0 / 0.6), transparent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  transition: opacity var(--sq-ms) var(--sq-ease);
+}
+.panel {
+  display: grid;
+  margin-top: 1.5rem;
+}
+.copy {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1;
+  grid-row: 1;
+  gap: 1rem;
+  transition:
+    opacity var(--sq-ms) var(--sq-ease),
+    visibility var(--sq-ms);
+}
+.text {
+  max-width: 46rem;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  text-wrap: balance;
+}
+.title {
+  color: var(--ink);
+}
+.desc {
+  color: var(--ink2);
+}
+.action {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.5rem;
+  padding: 0.7rem 1.1rem;
+  border: 0;
+  border-radius: var(--radius, 6px);
+  background: var(--sq-fill);
+  color: var(--sq-on-fill);
+  font: 600 0.9rem/1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.action:hover {
+  opacity: 0.85;
+}
+.actionArrow {
+  transition: transform 0.2s;
+}
+.action:hover .actionArrow {
+  transform: translateX(2px);
+}
+
+@container (min-width: 32rem) {
+  .overlay {
+    padding: 5rem 1.5rem 1.5rem;
+  }
+  .text {
+    font-size: 17px;
+  }
+}
+@container (min-width: 36rem) {
+  .panel {
+    margin-top: 1.75rem;
+  }
+  .copy {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2.5rem;
+  }
+}
+
+/* Arte provisória é retrato 4:5: mostra inteira e centralizada (foto real preenche o painel). */
+.pic svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  margin-inline: auto;
+}
+span.pic {
+  background: var(--bg2);
+}
+
+/* Foto real é retrato: mostra inteira (sem cortar a tatuagem) sobre o fundo do tema. */
+img.pic {
+  object-fit: contain;
+  background: var(--bg2);
+}
