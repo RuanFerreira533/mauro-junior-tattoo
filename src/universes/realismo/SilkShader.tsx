@@ -157,7 +157,7 @@ export function SilkShader({ on = true }: { on?: boolean }) {
       if (cleanup) ctl.current?.set(latestOn.current);
     };
     if (latestOn.current) init();
-    else timerId = window.setTimeout(init, 2500); // depois da entrada da hero
+    else timerId = window.setTimeout(init, 5500); // depois da hero, e sem coincidir com o canvas do Blackwork
 
 
     return () => {

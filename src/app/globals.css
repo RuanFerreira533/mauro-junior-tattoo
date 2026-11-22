@@ -973,8 +973,7 @@ button {
 .hhero__title > span {
   display: block;
   white-space: nowrap;
-  -webkit-mask-image: linear-gradient(#000 45%, rgba(0, 0, 0, 0.5) 100%);
-  mask-image: linear-gradient(#000 45%, rgba(0, 0, 0, 0.5) 100%);
+  will-change: clip-path;
 }
 .hhero__title em {
   color: var(--accent);

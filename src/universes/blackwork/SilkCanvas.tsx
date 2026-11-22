@@ -127,7 +127,7 @@ export function SilkCanvas({ on = true }: { on?: boolean }) {
       if (cleanup) ctl.current?.set(latestOn.current);
     };
     if (latestOn.current) init();
-    else timerId = window.setTimeout(init, 2500); // depois da entrada da hero
+    else timerId = window.setTimeout(init, 4500); // depois da entrada da hero (termina ~4s)
 
 
     return () => {
