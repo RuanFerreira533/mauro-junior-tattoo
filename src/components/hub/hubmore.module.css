@@ -129,11 +129,14 @@
 /* ---------- Local ---------- */
 .localStage {
   position: relative;
+  width: min(1240px, calc(100% - clamp(40px, 8vw, 112px)));
+  margin: clamp(64px, 12vh, 140px) auto;
 }
 .map {
   position: relative;
   height: clamp(340px, 52vw, 600px);
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   background: #1a1d22;
 }
 .map iframe {
@@ -167,7 +170,7 @@
     inset-block: 0;
     height: max-content;
     margin-block: auto;
-    left: max(24px, calc((100% - 1240px) / 2 + 24px));
+    left: 28px;
     width: min(440px, 42%);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
   }
