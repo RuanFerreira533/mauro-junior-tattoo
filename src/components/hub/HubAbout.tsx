@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { universes } from "@/universes";
 
-// Para usar uma foto: salve em public/sobre/mauro.jpg e troque ABOUT_PHOTO para "/sobre/mauro.jpg".
-const ABOUT_PHOTO: string | null = null;
+// Foto do Sobre: public/sobre/mauro.jpg (null mostra o espaço reservado).
+const ABOUT_PHOTO: string | null = "/sobre/mauro.jpg";
 
 /**
- * Sobre: fica logo abaixo da hero; o espaço da foto sobe e invade o fim da hero.
+ * Sobre: fica logo abaixo da hero, com foto e texto alinhados lado a lado.
  * Texto provisório escrito a partir do perfil público (@maurojr_tattoo): revisar com o Mauro (D-66).
  */
 export function HubAbout() {

@@ -1326,7 +1326,7 @@ button {
 /* ---------- Sobre e Contato (hub): faixas de ponta a ponta, mesma linguagem da hero ---------- */
 .band {
   position: relative;
-  z-index: 2; /* acima da hero: a foto do Sobre invade o fim dela */
+  z-index: 2;
   background: var(--base-bg);
   color: var(--ink);
   font-family: var(--font-body);
@@ -1367,18 +1367,18 @@ button {
 /* Sobre */
 .habout__in {
   grid-template-columns: 1fr;
-  padding-top: 0;
+  align-items: center;
 }
 .habout__photo {
   position: relative;
   width: 100%;
   max-width: 480px;
   aspect-ratio: 4 / 5;
-  transform: translateY(calc(-1 * clamp(40px, 12vh, 140px)));
-  margin-bottom: calc(-1 * clamp(40px, 12vh, 140px));
+  overflow: hidden;
 }
 .habout__img {
   object-fit: cover;
+  object-position: 50% 22%;
 }
 .habout__slot {
   display: grid;
@@ -1396,8 +1396,7 @@ button {
   opacity: 0.8;
 }
 .habout__text {
-  align-self: end;
-  padding-top: clamp(24px, 6vh, 72px);
+  align-self: center;
 }
 .habout__facts {
   display: grid;
