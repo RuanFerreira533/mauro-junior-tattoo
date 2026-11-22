@@ -40,7 +40,7 @@ export function HubAbout() {
       <div className="band__in habout__in">
         <h2 id="sobre-titulo" className="band__title">
           <i className="band__sq" aria-hidden="true" />
-          Quem sou eu
+          Mais sobre mim
         </h2>
 
         <AboutCarousel slides={SLIDES} />
