@@ -237,38 +237,6 @@ button {
   gap: clamp(12px, 2.4vh, 28px);
   padding: clamp(14px, 2.4vw, 28px) clamp(16px, 4vw, 56px) 18px;
 }
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-.brand {
-  font-weight: 700;
-  color: inherit;
-  text-decoration: none;
-}
-.badge {
-  padding: 0.35em 0.9em;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--ink2);
-}
-.hub__head {
-  display: grid;
-  gap: 0.5rem;
-  max-width: 64rem;
-}
-.hub__kicker {
-  margin: 0;
-  color: var(--ink2);
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
 .hub__title {
   margin: 0;
   font-family: var(--font-display);
@@ -286,18 +254,6 @@ button {
   color: var(--ink2);
   font-size: clamp(1rem, 1.5vw, 1.2rem);
 }
-.hub__foot {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 8px 24px;
-  color: var(--ink2);
-  font-size: 0.8rem;
-}
-.hub__foot p {
-  margin: 0;
-}
-
 /* ---------- Portais circulares (D-48) ---------- */
 .portals {
   display: grid;
@@ -662,20 +618,6 @@ button {
   color: var(--ink2);
 }
 
-.footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 8px 24px;
-  padding: 20px clamp(16px, 6vw, 96px) 28px;
-  border-top: 1px solid var(--line);
-  color: var(--ink2);
-  font-size: 0.8rem;
-}
-.footer p {
-  margin: 0;
-}
-
 /* ---------- Arte (imagem real ou placeholder) ---------- */
 .art {
   position: relative;
@@ -703,19 +645,6 @@ button {
 }
 
 /* ---------- Revelação ao rolar ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(var(--rv-y, 24px));
-  transition:
-    opacity var(--rv-dur, 0.8s) ease,
-    transform var(--rv-dur, 0.8s) var(--ease);
-  transition-delay: calc(var(--i, 0) * 70ms);
-}
-.reveal[data-in] {
-  opacity: 1;
-  transform: none;
-}
-
 /* ---------- Visualizador de obra ---------- */
 .viewer {
   width: min(980px, 94vw);
@@ -883,7 +812,6 @@ button {
   }
   .portal[data-state],
   .portal__art,
-  .reveal,
   .btn:hover {
     transform: none !important;
   }
@@ -1393,4 +1321,183 @@ button {
 .hfoot__note a,
 .budget small a {
   color: var(--ink);
+}
+
+/* ---------- Sobre e Contato (hub) ---------- */
+.habout,
+.hcontact {
+  display: grid;
+  gap: clamp(28px, 5vw, 72px);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(56px, 11vh, 130px) clamp(20px, 4vw, 56px);
+  background: var(--base-bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+.habout {
+  grid-template-columns: 1fr;
+}
+.habout__photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-width: 520px;
+  width: 100%;
+}
+.habout__img {
+  object-fit: cover;
+}
+.habout__slot {
+  display: grid;
+  place-content: center;
+  gap: 0.3rem;
+  width: 100%;
+  height: 100%;
+  border: 1px dashed var(--line);
+  color: var(--ink2);
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+.habout__slot small {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+.habout__text {
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+  max-width: 38rem;
+}
+.habout__text p,
+.hcontact__intro p {
+  margin: 0;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+.habout__kicker {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0;
+  color: var(--ink2);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.habout__kicker span {
+  width: 48px;
+  height: 1px;
+  background: var(--ink2);
+}
+.habout__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+.habout__title em {
+  color: var(--accent);
+  font-style: normal;
+}
+.habout__text .habout__note {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.hcontact {
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--line);
+}
+.hcontact__intro {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+.hcontact__list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.hcontact__list li {
+  display: grid;
+  gap: 0.1rem;
+}
+.hcontact__list span {
+  color: var(--ink2);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.hcontact__list a,
+.hcontact__list b {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+.hcontact__list a:hover {
+  color: var(--accent);
+}
+.hcontact__form {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+.hcontact__form label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--ink2);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.hcontact__form input,
+.hcontact__form select,
+.hcontact__form textarea {
+  width: 100%;
+  padding: 0.85em 1em;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--ink);
+  font: 400 1rem/1.4 var(--font-body);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.hcontact__form select option {
+  background: var(--base-bg);
+  color: var(--ink);
+}
+.hcontact__form input:focus-visible,
+.hcontact__form select:focus-visible,
+.hcontact__form textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.hcontact__form .hfoot__btn {
+  justify-self: start;
+  border: 0;
+  cursor: pointer;
+}
+@media (min-width: 900px) {
+  .habout {
+    grid-template-columns: minmax(0, 0.8fr) 1fr;
+    align-items: center;
+  }
+  .hcontact {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+  .hcontact__form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hcontact__wide {
+    grid-column: 1 / -1;
+  }
 }

@@ -7,11 +7,11 @@ export const fineline: Universe = {
   order: 2,
   kicker: "Traço fino, delicado e cheio de respiro.",
   description:
-    "Texto de exemplo. Aqui entram florais, letterings e composições de linha única, com traço fino e muito espaço vazio.",
+    "Florais, letterings e composições delicadas em traço fino, com muito respiro entre as linhas.",
   info: [
-    { title: "Traço fino", text: "Texto de exemplo: linhas delicadas pedem mão firme e boa região da pele." },
-    { title: "Tamanho", text: "Texto de exemplo: o detalhe define o tamanho mínimo para o traço durar." },
-    { title: "Retoque", text: "Texto de exemplo: traços finos podem pedir um retoque depois de cicatrizar." },
+    { title: "Traço fino", text: "Linhas delicadas pedem mão firme e uma boa região da pele para durar bonitas." },
+    { title: "Tamanho", text: "Quanto mais detalhe, maior precisa ser o desenho para o traço não se perder com o tempo." },
+    { title: "Retoque", text: "Traços muito finos podem pedir um retoque depois de cicatrizar. Isso é normal e faz parte." },
   ],
   cta: { label: "Pedir orçamento Fine Line", hint: "Mencione o universo Fine Line na mensagem." },
   portal: { art: "/universos/fineline/portal.png" },

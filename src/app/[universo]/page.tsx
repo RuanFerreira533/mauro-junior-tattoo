@@ -6,7 +6,7 @@ import { Hero } from "@/components/universe/Hero";
 import { UniverseGallery } from "@/components/universe/UniverseGallery";
 import { Info } from "@/components/universe/Info";
 import { Budget } from "@/components/universe/Budget";
-import { Footer } from "@/components/universe/Footer";
+import { HubFooter } from "@/components/hub/HubFooter";
 
 type Props = { params: Promise<{ universo: string }> };
 
@@ -33,7 +33,7 @@ export default async function UniversePage({ params }: Props) {
         <Info u={u} />
         <Budget u={u} />
       </main>
-      <Footer />
+      <HubFooter />
     </>
   );
 }

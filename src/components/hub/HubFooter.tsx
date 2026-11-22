@@ -42,10 +42,16 @@ export function HubFooter() {
           <h3 className="hfoot__h">Links rápidos</h3>
           <ul className="hfoot__list">
             <li>
-              <a href="#conteudo">Início</a>
+              <Link href="/">Início</Link>
             </li>
             <li>
-              <a href="#estilos">Estilos</a>
+              <Link href="/#estilos">Estilos</Link>
+            </li>
+            <li>
+              <Link href="/#sobre">Sobre</Link>
+            </li>
+            <li>
+              <Link href="/#contato">Contato</Link>
             </li>
             {universes.map((u) => (
               <li key={u.slug}>

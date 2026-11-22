@@ -7,11 +7,11 @@ export const realismo: Universe = {
   order: 4,
   kicker: "Luz, sombra e textura de fotografia.",
   description:
-    "Texto de exemplo. Aqui entram retratos, animais e cenas em preto e cinza, com gradiente suave e leitura fotográfica.",
+    "Retratos, animais e cenas em preto e cinza, com luz e sombra suaves para a tatuagem parecer uma fotografia.",
   info: [
-    { title: "Foto de referência", text: "Texto de exemplo: boa luz e boa resolução mudam o resultado." },
-    { title: "Sombreado", text: "Texto de exemplo: o degradê suave pede sessões mais longas." },
-    { title: "Posicionamento", text: "Texto de exemplo: a anatomia guia o enquadramento." },
+    { title: "Foto de referência", text: "Uma foto nítida e bem iluminada muda completamente o resultado." },
+    { title: "Sombreado", text: "O degradê suave leva mais tempo e costuma pedir sessões mais longas." },
+    { title: "Posicionamento", text: "A anatomia guia o enquadramento para a imagem acompanhar o corpo." },
   ],
   cta: { label: "Pedir orçamento Realismo", hint: "Mencione o universo Realismo na mensagem." },
   portal: { art: "/universos/realismo/portal.png" },

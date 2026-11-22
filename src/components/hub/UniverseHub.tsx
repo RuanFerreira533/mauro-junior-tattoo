@@ -8,6 +8,8 @@ import { useCanHover } from "@/lib/useCanHover";
 import { Portal } from "./Portal";
 import { HubHero } from "./HubHero";
 import { HubFooter } from "./HubFooter";
+import { HubAbout } from "./HubAbout";
+import { HubContact } from "./HubContact";
 
 /**
  * Home em três partes independentes:
@@ -84,6 +86,9 @@ export function UniverseHub() {
             </p>
           </div>
         </section>
+
+        <HubAbout />
+        <HubContact />
       </main>
 
       <HubFooter />

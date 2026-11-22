@@ -7,11 +7,11 @@ export const anime: Universe = {
   order: 1,
   kicker: "Cor, energia e linhas de impacto.",
   description:
-    "Texto de exemplo. Aqui entram personagens, cenas e referências de animação, com cor chapada, contorno forte e muito movimento.",
+    "Personagens e cenas de animação, mangá e games levados para a pele, com contorno firme e sombras que dão vida ao traço.",
   info: [
-    { title: "Referências", text: "Texto de exemplo: envie o personagem ou a cena que você tem em mente." },
-    { title: "Cor e contorno", text: "Texto de exemplo: o estilo pede contorno firme e cor com intenção." },
-    { title: "Tamanho", text: "Texto de exemplo: o detalhe define o tamanho mínimo ideal." },
+    { title: "Referência", text: "Mande o personagem ou a cena. Quanto melhor a referência, mais fiel fica o desenho." },
+    { title: "Tamanho e detalhe", text: "Rostos e cenários cheios de detalhe pedem um tamanho que deixe o traço respirar." },
+    { title: "Cicatrização", text: "Linhas firmes e áreas escuras pedem cuidado depois da sessão para o resultado durar." },
   ],
   cta: { label: "Pedir orçamento Anime", hint: "Mencione o universo Anime na mensagem." },
   portal: { art: "/universos/anime/portal.png", jp: "アニメ" },

@@ -3,8 +3,8 @@ import Link from "next/link";
 import { universes } from "@/universes";
 import { whatsappUrl } from "@/lib/contact";
 
-// Foto da hero: para trocar, substitua public/hero/mjr.png (ou mude o caminho aqui).
-const HERO_PHOTO = "/hero/mjr.png";
+// Foto da hero: para trocar, substitua public/hero/hero.jpg (ou mude o caminho aqui).
+const HERO_PHOTO = "/hero/hero.jpg";
 const CONTACT_URL = whatsappUrl("Oi, Mauro! Quero pedir um orçamento.");
 
 const Arrow = ({ down = false }: { down?: boolean }) => (
@@ -34,6 +34,8 @@ export function HubHero() {
         </Link>
         <nav className="hnav__links" aria-label="Principal">
           <a href="#estilos">Estilos</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#contato">Contato</a>
           <a className="hnav__cta" href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
             Orçamento <Arrow />
             <span className="sr-only"> (abre o WhatsApp em nova aba)</span>

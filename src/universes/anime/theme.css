@@ -40,59 +40,6 @@
   to { transform: scale(1.08) translateX(-2%); }
 }
 
-.a-burst {
-  position: absolute;
-  left: 50%;
-  top: 58%;
-  width: 150vmax;
-  height: 150vmax;
-  margin: -75vmax 0 0 -75vmax;
-  background: repeating-conic-gradient(rgba(255, 255, 255, 0.1) 0 2.2deg, transparent 2.2deg 7.5deg);
-  -webkit-mask-image: radial-gradient(circle, transparent 5%, #000 22%, transparent 56%);
-  mask-image: radial-gradient(circle, transparent 5%, #000 22%, transparent 56%);
-  animation: a-spin 90s linear infinite;
-}
-.a-dots {
-  position: absolute;
-  inset: -28px;
-  background: radial-gradient(circle, var(--accent) 2px, transparent 2.6px) 0 0 / 28px 28px;
-  opacity: 0.13;
-  -webkit-mask-image: linear-gradient(200deg, transparent 15%, #000 95%);
-  mask-image: linear-gradient(200deg, transparent 15%, #000 95%);
-  animation: a-drift 7s linear infinite;
-}
-.a-slash {
-  position: absolute;
-  opacity: 0.28;
-  animation: a-slash 9s ease-in-out infinite alternate;
-}
-.a-slash--1 {
-  left: -8vw;
-  top: 64vh;
-  width: 56vw;
-  height: 11vh;
-  background: var(--accent);
-  clip-path: polygon(0 0, 100% 30%, 96% 100%, 0 70%);
-}
-.a-slash--2 {
-  right: -10vw;
-  top: 10vh;
-  width: 44vw;
-  height: 7vh;
-  background: var(--accent2);
-  clip-path: polygon(6% 0, 100% 0, 100% 70%, 0 100%);
-  animation-delay: -3s;
-  animation-direction: alternate-reverse;
-}
-.a-slash--3 {
-  left: 22vw;
-  bottom: -3vh;
-  width: 36vw;
-  height: 5vh;
-  background: #ffd23f;
-  clip-path: polygon(0 20%, 100% 0, 94% 100%, 4% 100%);
-  animation-delay: -6s;
-}
 .a-spark {
   position: absolute;
   width: calc(var(--s, 1) * 26px);
@@ -111,32 +58,12 @@
 @keyframes a-spin {
   to { transform: rotate(360deg); }
 }
-@keyframes a-drift {
-  to { transform: translate(28px, 28px); }
-}
-@keyframes a-slash {
-  from { transform: translateX(-3vw); }
-  to { transform: translateX(4vw); }
-}
 @keyframes a-twinkle {
   0%, 100% { transform: scale(0.35) rotate(0deg); opacity: 0.2; }
   50% { transform: scale(1) rotate(45deg); opacity: 1; }
 }
 
 /* ---- Página do universo ---- */
-.hero[data-u="anime"]::before {
-  content: "";
-  position: absolute;
-  right: -4%;
-  top: 4%;
-  width: min(48vmin, 520px);
-  aspect-ratio: 1;
-  background: var(--accent2);
-  opacity: 0.9;
-  clip-path: polygon(50% 0, 58% 22%, 78% 6%, 74% 30%, 98% 28%, 80% 46%, 100% 62%, 76% 64%, 86% 90%, 62% 78%, 50% 100%, 42% 78%, 18% 92%, 26% 66%, 0 60%, 22% 46%, 4% 26%, 28% 30%, 24% 6%, 42% 22%);
-  animation: a-spin 50s linear infinite;
-  z-index: -1;
-}
 .hero[data-u="anime"] .hero__kicker {
   display: inline-block;
   justify-self: start;

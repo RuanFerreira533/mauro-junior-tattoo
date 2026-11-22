@@ -31,25 +31,6 @@
   display: block;
 }
 
-.r-fog {
-  position: absolute;
-  width: 90vmax;
-  height: 90vmax;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(200, 205, 210, 0.15), transparent 68%);
-}
-.r-fog--a { left: -30vmax; top: -20vmax; animation: r-drift 38s ease-in-out infinite alternate; }
-.r-fog--b { right: -34vmax; top: 10vmax; animation: r-drift 46s ease-in-out infinite alternate-reverse; }
-.r-fog--c { left: 10vmax; bottom: -50vmax; animation: r-drift 54s ease-in-out infinite alternate; }
-.r-spot {
-  position: absolute;
-  left: 50%;
-  top: 38%;
-  width: 80vmax;
-  height: 80vmax;
-  margin: -40vmax 0 0 -40vmax;
-  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.11), transparent 60%);
-}
 .r-dust {
   position: absolute;
   width: 3px;
@@ -59,13 +40,6 @@
   opacity: 0;
   animation: r-float 16s ease-in-out infinite;
   animation-delay: calc(var(--d, 0) * -1.6s);
-}
-.r-grain {
-  position: absolute;
-  inset: -50%;
-  opacity: 0.08;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: r-grain 1.2s steps(6) infinite;
 }
 .r-vignette {
   position: absolute;
@@ -81,15 +55,6 @@
   30%, 70% { opacity: 0.55; }
   50% { transform: translateY(-40px); }
 }
-@keyframes r-grain {
-  0% { transform: translate(0, 0); }
-  20% { transform: translate(-4%, 3%); }
-  40% { transform: translate(3%, -5%); }
-  60% { transform: translate(-6%, -2%); }
-  80% { transform: translate(5%, 4%); }
-  100% { transform: translate(0, 0); }
-}
-
 /* ---- Portal: disco com um olho em névoa; as pálpebras se abrem no preview ---- */
 .portal[data-theme="realismo"] .portal__scene {
   background: radial-gradient(circle at 50% 38%, #3c3f43, #0b0c0d 78%);
