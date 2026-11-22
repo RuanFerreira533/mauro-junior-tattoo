@@ -1,0 +1,207 @@
+.wrap {
+  display: grid;
+  gap: clamp(28px, 6vw, 80px);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .wrap {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  }
+}
+
+/* Fotos em leque: central na frente, laterais atrás e levemente giradas */
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 6 / 5;
+  perspective: 1000px;
+}
+.img {
+  position: absolute;
+  inset: 0 12%;
+  overflow: hidden;
+  background: var(--bg2);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.9s cubic-bezier(0.34, 1.25, 0.4, 1),
+    opacity 0.6s ease;
+}
+.img img {
+  object-fit: cover;
+}
+.img[data-pos="c"] {
+  z-index: 3;
+  transform: none;
+}
+.img[data-pos="l"] {
+  z-index: 2;
+  transform: translate(-25%, -7%) scale(0.82) rotateY(14deg);
+}
+.img[data-pos="r"] {
+  z-index: 2;
+  transform: translate(25%, -7%) scale(0.82) rotateY(-14deg);
+}
+.img[data-pos="h"] {
+  z-index: 1;
+  opacity: 0;
+}
+/* as laterais escurecem para a central ganhar destaque */
+.img[data-pos="l"]::after,
+.img[data-pos="r"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 11, 0.45);
+}
+
+/* Entrada (uma vez): central sobe, laterais saem de trás dela, em tempos diferentes */
+.wrap[data-in="false"] .img {
+  opacity: 0;
+  transform: translateY(70px) scale(0.86);
+}
+.wrap[data-in="false"] .img[data-pos="l"],
+.wrap[data-in="false"] .img[data-pos="r"] {
+  transform: translateY(0) scale(0.7);
+}
+.wrap[data-ready="false"] .img[data-pos="l"] {
+  transition-delay: 0.45s;
+}
+.wrap[data-ready="false"] .img[data-pos="r"] {
+  transition-delay: 0.65s;
+}
+
+/* Texto */
+.content {
+  display: grid;
+  gap: clamp(20px, 3vw, 36px);
+  min-width: 0;
+  transition:
+    opacity 0.8s ease 0.5s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+}
+.wrap[data-in="false"] .content {
+  opacity: 0;
+  transform: translateX(32px);
+}
+.name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.role {
+  margin: 0.4rem 0 1.4rem;
+  color: var(--accent);
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+.quote {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--ink2);
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.75;
+}
+.word {
+  display: inline-block;
+}
+
+/* troca de texto: nome sobe de uma máscara, cargo desliza, palavras entram em sequência */
+.text {
+  min-height: 15rem;
+}
+.wrap[data-in="false"] .word,
+.wrap[data-in="false"] .name,
+.wrap[data-in="false"] .role {
+  opacity: 0;
+}
+.wrap[data-in="true"] .name {
+  animation: a-name 0.8s cubic-bezier(0.77, 0, 0.18, 1) both;
+}
+.wrap[data-in="true"] .role {
+  animation: a-role 0.7s ease 0.25s both;
+}
+.wrap[data-in="true"] .word {
+  animation: a-word 0.5s cubic-bezier(0.16, 1, 0.3, 1) calc(0.4s + var(--w) * 28ms) both;
+}
+@keyframes a-name {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 -2% 0 0); }
+}
+@keyframes a-role {
+  from { opacity: 0; translate: -14px 0; }
+}
+@keyframes a-word {
+  from { opacity: 0; transform: translateY(0.6em); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Controles */
+.ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+}
+.arrow:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.arrow:focus-visible,
+.dot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 0.6rem;
+}
+.dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--line);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+}
+.dot[data-on="true"] {
+  background: var(--accent);
+  transform: scale(1.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img,
+  .content,
+  .name,
+  .role,
+  .word,
+  .dot {
+    transition: none !important;
+    animation: none !important;
+  }
+}

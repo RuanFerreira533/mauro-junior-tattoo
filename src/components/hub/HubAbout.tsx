@@ -1,59 +1,70 @@
-import Image from "next/image";
 import { universes } from "@/universes";
+import { AboutCarousel, type AboutSlide } from "./AboutCarousel";
 
-// Foto do Sobre: public/sobre/mauro.jpg (null mostra o espaço reservado).
-const ABOUT_PHOTO: string | null = "/sobre/mauro.jpg";
+// Um texto por foto. Trocar a foto: substitua o arquivo em public/sobre/ (ou mude o caminho aqui).
+const SLIDES: AboutSlide[] = [
+  {
+    src: "/sobre/mauro.jpg",
+    alt: "Mauro Junior sorrindo, de blazer azul e óculos, em um evento",
+    focus: "50% 22%",
+    name: "Mauro Junior",
+    role: "Tatuador em Santa Isabel, SP",
+    quote:
+      "Tudo começa ouvindo a sua ideia. Depois a gente desenha junto, ajusta até fazer sentido e só então leva para a pele, com o mesmo cuidado do primeiro rascunho até a cicatrização.",
+  },
+  {
+    src: "/sobre/premio.jpg",
+    alt: "Cartaz Destaques Melhores do Ano, edição Santa Isabel SP, com a foto do Mauro Jr, tatuador",
+    name: "Destaque do ano",
+    role: "Melhores do Ano, edição Santa Isabel",
+    quote:
+      "O trabalho do Mauro entrou na lista dos Destaques Melhores do Ano de Santa Isabel. É o tipo de reconhecimento que não muda a rotina: o cuidado que chegou até ali é o mesmo em cada sessão.",
+  },
+  {
+    src: "/sobre/familia.jpg",
+    alt: "Retrato em preto e branco do Mauro com a esposa e as duas filhas, todos brincando para a câmera",
+    focus: "50% 35%",
+    name: "Pai de duas meninas",
+    role: "Eternizar momentos",
+    quote:
+      "A bio dele resume o ofício em duas palavras, e a vontade de guardar o que importa começa em casa. É dela que vem o cuidado com a história que cada cliente carrega para o estúdio.",
+  },
+];
 
 /**
- * Sobre: fica logo abaixo da hero, com foto e texto alinhados lado a lado.
- * Texto provisório escrito a partir do perfil público (@maurojr_tattoo): revisar com o Mauro (D-66).
+ * Sobre: fica logo abaixo da hero. Título, carrossel (foto + texto) e dados do estúdio.
+ * Textos provisórios, escritos a partir do perfil público (@maurojr_tattoo) e das fotos enviadas: revisar com o Mauro (D-66).
  */
 export function HubAbout() {
   return (
     <section id="sobre" className="band habout" aria-labelledby="sobre-titulo">
       <div className="band__in habout__in">
-        <div className="habout__photo">
-          {ABOUT_PHOTO ? (
-            <Image src={ABOUT_PHOTO} alt="Mauro Junior no estúdio" fill sizes="(max-width: 900px) 90vw, 480px" className="habout__img" />
-          ) : (
-            <div className="habout__slot" role="img" aria-label="Espaço reservado para a foto do Mauro ou do estúdio">
-              <span>Espaço para foto</span>
-              <small>Mauro ou estúdio, formato 4:5</small>
-            </div>
-          )}
-        </div>
+        <h2 id="sobre-titulo" className="band__title">
+          <i className="band__sq" aria-hidden="true" />
+          Cada tatuagem guarda uma história.
+        </h2>
 
-        <div className="habout__text">
-          <h2 id="sobre-titulo" className="band__title">
-            <i className="band__sq" aria-hidden="true" />
-            Cada tatuagem guarda uma história.
-          </h2>
-          <p>
-            Mauro Junior é tatuador em Santa Isabel, SP. Pai de duas meninas, leva para o estúdio a mesma ideia que está na bio dele:
-            eternizar momentos.
-          </p>
-          <p>O estilo muda de um trabalho para o outro, o cuidado não: ouvir a sua ideia, desenhar junto e acompanhar até a cicatrização.</p>
+        <AboutCarousel slides={SLIDES} />
 
-          <dl className="habout__facts">
-            <div>
-              <dt>Estúdio</dt>
-              <dd>Mauro Jr Tattoo e Piercing</dd>
-            </div>
-            <div>
-              <dt>Cidade</dt>
-              <dd>Santa Isabel, SP</dd>
-            </div>
-            <div>
-              <dt>Estilos</dt>
-              <dd>{universes.map((u) => u.name).join(", ")}</dd>
-            </div>
-            <div>
-              <dt>Reconhecimento</dt>
-              <dd>Destaques – Melhores do Ano de Santa Isabel</dd>
-            </div>
-          </dl>
-          <p className="habout__note">Texto provisório, a revisar com o Mauro.</p>
-        </div>
+        <dl className="habout__facts">
+          <div>
+            <dt>Estúdio</dt>
+            <dd>Mauro Jr Tattoo e Piercing</dd>
+          </div>
+          <div>
+            <dt>Cidade</dt>
+            <dd>Santa Isabel, SP</dd>
+          </div>
+          <div>
+            <dt>Estilos</dt>
+            <dd>{universes.map((u) => u.name).join(", ")}</dd>
+          </div>
+          <div>
+            <dt>Reconhecimento</dt>
+            <dd>Destaques Melhores do Ano de Santa Isabel</dd>
+          </div>
+        </dl>
+        <p className="habout__note">Texto provisório, a revisar com o Mauro.</p>
       </div>
     </section>
   );
