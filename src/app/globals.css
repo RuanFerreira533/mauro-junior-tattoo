@@ -284,6 +284,16 @@ button {
     transform 0.6s var(--ease),
     opacity 0.5s ease;
 }
+/* cor da pasta de cada estilo (o Anime já usa o roxo do próprio destaque) */
+.portal[data-theme="fineline"] {
+  --folder: color-mix(in srgb, #3b82c4 42%, var(--bg2));
+}
+.portal[data-theme="blackwork"] {
+  --folder: color-mix(in srgb, #b3261e 42%, var(--bg2));
+}
+.portal[data-theme="realismo"] {
+  --folder: color-mix(in srgb, #c28a2c 40%, var(--bg2));
+}
 .portal:focus-visible {
   outline-offset: 6px;
   border-radius: 6cqw;
