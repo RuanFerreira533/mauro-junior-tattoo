@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { universes } from "@/universes";
 import { whatsappUrl } from "@/lib/contact";
 
 // Foto da hero: para trocar, substitua public/hero/hero.jpg (ou mude o caminho aqui).
@@ -44,9 +43,16 @@ export function HubHero() {
       </header>
 
       <div className="hhero__body">
-        <p className="hhero__kicker">
-          <span aria-hidden="true" />
-          Tatuador profissional
+        <p className="hhero__name">
+          <span className="sr-only">Mauro Junior</span>
+          <span aria-hidden="true">
+            {[..."Mauro Junior"].map((c, i) => (
+              <span key={i} className="hhero__ch" style={{ "--i": i } as React.CSSProperties}>
+                {c === " " ? " " : c}
+              </span>
+            ))}
+          </span>
+          <small>Tatuador profissional</small>
         </p>
         <h1 id="hero-titulo" className="hhero__title">
           <i className="hhero__sq" aria-hidden="true" />
@@ -61,19 +67,7 @@ export function HubHero() {
         </a>
       </div>
 
-      <ol className="hhero__count" aria-label="Universos">
-        {universes.map((u, i) => (
-          <li key={u.slug}>
-            <a href="#estilos">
-              <span className="hhero__count-name">{u.name}</span>
-              {String(i + 1).padStart(2, "0")}
-              <span className="sr-only"> · universo {u.name}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
-
-      <p className="hhero__tag">Santa Isabel-SP</p>
+      <p className="hhero__tag">Santa Isabel, SP</p>
     </section>
   );
 }
