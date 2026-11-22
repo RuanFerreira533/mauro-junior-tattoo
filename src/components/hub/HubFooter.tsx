@@ -1,3 +1,4 @@
+import { Year } from "./Year";
 import { INSTAGRAM_URL, WHATSAPP_DISPLAY, whatsappUrl } from "@/lib/contact";
 
 const INSTAGRAM = INSTAGRAM_URL;
@@ -70,7 +71,16 @@ export function HubFooter() {
       </div>
 
       <div className="hfoot__bar">
-        <p>© {new Date().getFullYear()} Mauro Junior · Todos os direitos reservados</p>
+        <p>
+          © <Year /> Mauro Junior · Todos os direitos reservados
+        </p>
+        <p>
+          Site desenvolvido por{" "}
+          <a href="https://www.instagram.com/ruandesenv" target="_blank" rel="noopener noreferrer">
+            @ruandesenv
+            <span className="sr-only"> (abre o Instagram em nova aba)</span>
+          </a>
+        </p>
         <p>Protótipo · imagens e textos de exemplo</p>
       </div>
     </footer>

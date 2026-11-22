@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { HubNav } from "./HubNav";
 
-// Foto da hero: para trocar, substitua public/hero/hero.jpg (ou mude o caminho aqui).
+// Foto da hero: para trocar, substitua public/hero/hero.jpg e refaça hero-mobile.jpg (recorte vertical, ~1560x2450).
 const HERO_PHOTO = "/hero/hero.jpg";
+// Versão para celular: recorte vertical já ampliado, servido direto (sem o site reduzir e recomprimir).
+const HERO_PHOTO_MOBILE = "/hero/hero-mobile.jpg";
 
 const Arrow = ({ down = false }: { down?: boolean }) => (
   <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true" style={down ? { rotate: "90deg" } : undefined}>
@@ -18,7 +20,9 @@ export function HubHero() {
   return (
     <section className="hhero" aria-labelledby="hero-titulo">
       <div className="hhero__photo" aria-hidden="true">
-        <Image src={HERO_PHOTO} alt="" fill sizes="100vw" preload className="hhero__img" />
+        {/* duas versões, só uma é baixada: o navegador não busca imagem lazy escondida com display:none */}
+        <Image src={HERO_PHOTO} alt="" fill sizes="100vw" quality={90} fetchPriority="high" className="hhero__img hhero__img--d" />
+        <Image src={HERO_PHOTO_MOBILE} alt="" fill sizes="100vw" unoptimized fetchPriority="high" className="hhero__img hhero__img--m" />
         <span className="hhero__shade" />
       </div>
 

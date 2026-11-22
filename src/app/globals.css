@@ -1031,6 +1031,9 @@ button {
   color: var(--accent);
   font-style: inherit;
 }
+.hhero__img--m {
+  display: none;
+}
 .hhero__sq {
   position: absolute;
   left: 0;
@@ -1277,6 +1280,14 @@ button {
 .hfoot__bar p {
   margin: 0;
 }
+.hfoot__bar a {
+  color: var(--ink);
+  text-underline-offset: 3px;
+  transition: color 0.25s;
+}
+.hfoot__bar a:hover {
+  color: var(--accent);
+}
 @media (min-width: 760px) {
   .hfoot__grid {
     grid-template-columns: 1fr 1fr;
@@ -1294,7 +1305,14 @@ button {
     padding-bottom: clamp(28px, 7vh, 64px);
   }
   .hhero__img {
-    object-position: 42% 30%; /* cabeça e mãos do Mauro no centro do corte vertical */
+    object-position: 42% 30%;
+  }
+  .hhero__img--d {
+    display: none;
+  }
+  .hhero__img--m {
+    display: block;
+    object-position: 50% 30%; /* o recorte já está centrado no Mauro */
   }
   .hhero__shade {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.7) 62%, var(--base-bg) 100%);
