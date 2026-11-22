@@ -8,9 +8,9 @@
 @property --bg2 { syntax: "<color>"; inherits: true; initial-value: #17171a; }
 @property --ink { syntax: "<color>"; inherits: true; initial-value: #f4f4f2; }
 @property --ink2 { syntax: "<color>"; inherits: true; initial-value: #ababb0; }
-@property --accent { syntax: "<color>"; inherits: true; initial-value: #e0187c; }
+@property --accent { syntax: "<color>"; inherits: true; initial-value: #f2a516; }
 @property --accent2 { syntax: "<color>"; inherits: true; initial-value: #8a8a90; }
-@property --accent-ink { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --accent-ink { syntax: "<color>"; inherits: true; initial-value: #0a0a0b; }
 @property --line { syntax: "<color>"; inherits: true; initial-value: rgba(255, 255, 255, 0.24); }
 
 :root {
@@ -165,7 +165,7 @@ button {
   width: 90vmax;
   height: 60vmax;
   margin-left: -45vmax;
-  background: radial-gradient(closest-side, rgba(224, 24, 124, 0.13), transparent 70%);
+  background: radial-gradient(closest-side, rgba(242, 165, 22, 0.13), transparent 70%);
   animation: h-breathe 14s ease-in-out infinite alternate;
 }
 .h-mist {
