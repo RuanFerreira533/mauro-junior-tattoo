@@ -1511,6 +1511,10 @@ button {
   --accent-ink: #f2a516;
 }
 .hfoot {
+  /* fontes fixas (Inter): o rodapé é igual na home e em todos os universos */
+  --font-display: var(--f-base), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-label: var(--f-base), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: var(--f-base), system-ui, -apple-system, "Segoe UI", sans-serif;
   background: #0f1c2e; /* rodapé: azul-marinho */
   --ink: #f4f4f2;
   --ink2: rgba(244, 244, 242, 0.68);
