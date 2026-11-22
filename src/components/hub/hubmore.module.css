@@ -158,12 +158,17 @@
   color: var(--ink);
 }
 @media (min-width: 900px) {
+  .map {
+    height: clamp(660px, 50vw, 720px); /* sempre mais alto que o cartão */
+  }
   .info {
     position: absolute;
-    top: 50%;
+    /* centrado sem transform: as animações por rolagem não enxergam transform */
+    inset-block: 0;
+    height: max-content;
+    margin-block: auto;
     left: max(24px, calc((100% - 1240px) / 2 + 24px));
     width: min(440px, 42%);
-    transform: translateY(-50%);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
   }
 }
@@ -215,23 +220,6 @@
   border-color: var(--ink);
   background: rgba(255, 255, 255, 0.06);
 }
-.map {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border: 1px solid var(--line);
-  overflow: hidden;
-  background: var(--bg2);
-}
-.map iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  /* mapa claro do Google vira escuro, combinando com o site */
-  filter: invert(0.92) hue-rotate(180deg) grayscale(0.35) contrast(0.95);
-}
-
 /* ---------- Entradas (só onde o navegador suporta; sem suporte tudo fica visível) ---------- */
 @keyframes r-map {
   from { clip-path: inset(100% 0 0 0); }
