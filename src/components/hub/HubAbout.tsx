@@ -10,7 +10,7 @@ const SLIDES: AboutSlide[] = [
     name: "Mauro Junior",
     role: "Tatuador em Santa Isabel, SP",
     quote:
-      "Tudo começa ouvindo a sua ideia. Depois a gente desenha junto, ajusta até fazer sentido e só então leva para a pele, com o mesmo cuidado do primeiro rascunho até a cicatrização.",
+      "Tudo começa ouvindo a sua ideia. Depois eu desenho junto com você, ajusto até fazer sentido e só então levo para a pele, com o mesmo cuidado do primeiro rascunho até a cicatrização.",
   },
   {
     src: "/sobre/premio.jpg",
@@ -18,16 +18,16 @@ const SLIDES: AboutSlide[] = [
     name: "Destaque do ano",
     role: "Melhores do Ano, edição Santa Isabel",
     quote:
-      "O trabalho do Mauro entrou na lista dos Destaques Melhores do Ano de Santa Isabel. É o tipo de reconhecimento que não muda a rotina: o cuidado que chegou até ali é o mesmo em cada sessão.",
+      "Fui reconhecido entre os Destaques Melhores do Ano de Santa Isabel. Isso não muda a minha rotina: o cuidado que me levou até ali é o mesmo que eu levo para cada sessão.",
   },
   {
     src: "/sobre/familia.jpg",
     alt: "Retrato em preto e branco do Mauro com a esposa e as duas filhas, todos brincando para a câmera",
     focus: "50% 35%",
-    name: "Pai de duas meninas",
+    name: "Sou pai de duas meninas",
     role: "Eternizar momentos",
     quote:
-      "A bio dele resume o ofício em duas palavras, e a vontade de guardar o que importa começa em casa. É dela que vem o cuidado com a história que cada cliente carrega para o estúdio.",
+      "Eternizar momentos é o que eu escrevo na minha bio, e a vontade de guardar o que importa começa em casa. É dela que vem o cuidado com a história que cada cliente traz para o meu estúdio.",
   },
 ];
 

@@ -61,7 +61,7 @@ export function HubHero() {
             fica pra <em>sempre.</em>
           </span>
         </h1>
-        <p className="hhero__lead">Transforme suas ideias em arte com um tatuador que entende de verdade sobre o que faz.</p>
+        <p className="hhero__lead">Transforme suas ideias em arte comigo, um tatuador que entende de verdade o que faz.</p>
         <a className="hhero__go" href="#estilos">
           Explore os estilos <Arrow down />
         </a>
