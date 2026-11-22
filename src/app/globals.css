@@ -1282,7 +1282,7 @@ button {
 }
 @media (min-width: 1100px) {
   .hfoot__grid {
-    grid-template-columns: 1.4fr 1fr 1fr 0.6fr;
+    grid-template-columns: 1.6fr 1fr 0.5fr;
   }
 }
 

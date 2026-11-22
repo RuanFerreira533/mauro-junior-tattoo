@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { universes } from "@/universes";
 import { INSTAGRAM_URL, WHATSAPP_DISPLAY, whatsappUrl } from "@/lib/contact";
 
 const INSTAGRAM = INSTAGRAM_URL;
@@ -37,38 +35,6 @@ export function HubFooter() {
           </p>
           <span className="hfoot__glow" aria-hidden="true" />
         </div>
-
-        <nav className="hfoot__col" aria-label="Links rápidos">
-          <h3 className="hfoot__h">Links rápidos</h3>
-          <ul className="hfoot__list">
-            <li>
-              <Link href="/">Início</Link>
-            </li>
-            <li>
-              <Link href="/#sobre">Sobre</Link>
-            </li>
-            <li>
-              <Link href="/#estilos">Estilos</Link>
-            </li>
-            <li>
-              <Link href="/#contato">Contato</Link>
-            </li>
-            <li>
-              <Link href="/#perguntas">Perguntas</Link>
-            </li>
-            <li>
-              <Link href="/#avaliacoes">Avaliações</Link>
-            </li>
-            <li>
-              <Link href="/#local">Local</Link>
-            </li>
-            {universes.map((u) => (
-              <li key={u.slug}>
-                <Link href={`/${u.slug}`}>{u.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
 
         <div className="hfoot__col">
           <h3 className="hfoot__h">Contato</h3>
