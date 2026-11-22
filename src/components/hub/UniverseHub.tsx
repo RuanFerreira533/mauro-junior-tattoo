@@ -80,11 +80,7 @@ export function UniverseHub() {
               ))}
             </ul>
 
-            <p className="hub__hint">
-              {canHover
-                ? "Passe o mouse (ou use Tab) sobre um portal. Clique ou Enter para entrar."
-                : "Deslize para o lado e toque no portal centralizado para entrar."}
-            </p>
+            {!canHover && <p className="hub__hint">Deslize para o lado e toque no portal centralizado para entrar.</p>}
           </div>
         </section>
 
