@@ -1294,7 +1294,7 @@ button {
     padding-bottom: clamp(28px, 7vh, 64px);
   }
   .hhero__img {
-    object-position: 70% 30%;
+    object-position: 42% 30%; /* cabeça e mãos do Mauro no centro do corte vertical */
   }
   .hhero__shade {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.7) 62%, var(--base-bg) 100%);
@@ -1478,7 +1478,6 @@ button {
 @supports (animation-timeline: view()) {
   .habout .band__title,
   .hreviews .band__title,
-  .hlocal .band__title,
   .hfaq .band__title {
     animation: a-title linear both;
     animation-timeline: view();
@@ -1488,7 +1487,6 @@ button {
 @media (prefers-reduced-motion: reduce) {
   .habout .band__title,
   .hreviews .band__title,
-  .hlocal .band__title,
   .hfaq .band__title {
     animation: none !important;
   }

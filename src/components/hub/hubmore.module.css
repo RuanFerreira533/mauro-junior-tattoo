@@ -227,43 +227,8 @@
   border-color: var(--ink);
   background: rgba(255, 255, 255, 0.06);
 }
-/* ---------- Entradas (só onde o navegador suporta; sem suporte tudo fica visível) ---------- */
-@keyframes r-map {
-  from { clip-path: inset(100% 0 0 0); }
-  to { clip-path: inset(0 0 0 0); }
-}
-@keyframes r-line {
-  from { opacity: 0; translate: -26px 0; }
-}
-@supports (animation-timeline: view()) {
-  /* o quadro inteiro (mapa + cartão) abre junto, de baixo para cima */
-  .localStage {
-    animation: r-map linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 80%;
-  }
-  .address p,
-  .note,
-  .phone,
-  .actions {
-    animation: r-line linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 55%;
-  }
-  .address p:nth-child(2) { animation-range: entry 6% entry 61%; }
-  .address p:nth-child(3) { animation-range: entry 12% entry 67%; }
-  .note { animation-range: entry 18% entry 73%; }
-  .phone { animation-range: entry 24% entry 79%; }
-  .actions { animation-range: entry 30% entry 85%; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .track,
-  .localStage,
-  .address p,
-  .note,
-  .phone,
-  .actions {
+  .track {
     animation: none !important;
   }
   .cols {
