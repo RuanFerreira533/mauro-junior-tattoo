@@ -1,4 +1,3 @@
-import { universes } from "@/universes";
 import { AboutCarousel, type AboutSlide } from "./AboutCarousel";
 
 // Um texto por foto. Trocar a foto: substitua o arquivo em public/sobre/ (ou mude o caminho aqui).
@@ -32,7 +31,7 @@ const SLIDES: AboutSlide[] = [
 ];
 
 /**
- * Sobre: fica logo abaixo da hero. Título, carrossel (foto + texto) e dados do estúdio.
+ * Sobre: fica logo abaixo da hero. Título e carrossel (foto + texto).
  * Textos provisórios, escritos a partir do perfil público (@maurojr_tattoo) e das fotos enviadas: revisar com o Mauro (D-66).
  */
 export function HubAbout() {
@@ -41,30 +40,10 @@ export function HubAbout() {
       <div className="band__in habout__in">
         <h2 id="sobre-titulo" className="band__title">
           <i className="band__sq" aria-hidden="true" />
-          Cada tatuagem guarda uma história.
+          Quem sou eu
         </h2>
 
         <AboutCarousel slides={SLIDES} />
-
-        <dl className="habout__facts">
-          <div>
-            <dt>Estúdio</dt>
-            <dd>Mauro Jr Tattoo e Piercing</dd>
-          </div>
-          <div>
-            <dt>Cidade</dt>
-            <dd>Santa Isabel, SP</dd>
-          </div>
-          <div>
-            <dt>Estilos</dt>
-            <dd>{universes.map((u) => u.name).join(", ")}</dd>
-          </div>
-          <div>
-            <dt>Reconhecimento</dt>
-            <dd>Destaques Melhores do Ano de Santa Isabel</dd>
-          </div>
-        </dl>
-        <p className="habout__note">Texto provisório, a revisar com o Mauro.</p>
       </div>
     </section>
   );
