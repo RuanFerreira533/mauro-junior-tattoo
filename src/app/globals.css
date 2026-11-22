@@ -442,9 +442,9 @@ button {
   .portals {
     display: flex;
     justify-content: flex-start;
-    gap: 4vw;
+    gap: 5vw;
     padding-block: 1.4rem;
-    padding-inline: calc(50% - min(39vw, 180px));
+    padding-inline: calc(50% - min(33vw, 150px));
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
@@ -453,7 +453,7 @@ button {
     display: none;
   }
   .portals > li {
-    flex: 0 0 min(78vw, 360px);
+    flex: 0 0 min(66vw, 300px); /* mais estreito: os vizinhos aparecem nas laterais e mostram que dá para deslizar */
     scroll-snap-align: center;
   }
   .portal {
@@ -1635,4 +1635,36 @@ button {
   .hnav__burger svg {
     transition: none !important;
   }
+}
+
+/* Toque: leque das folhas mais fechado (não cobre os cards vizinhos) e pontinhos para escolher o estilo */
+@media (hover: none), (pointer: coarse), (max-width: 760px) {
+  .portal[data-state="preview"] .portal__sheet {
+    transform: translate(calc((var(--i) - 1) * 12cqw), -17cqw) rotate(calc((var(--i) - 1) * 6deg));
+  }
+}
+.hub__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.hub__dots button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition:
+    width 0.35s var(--ease),
+    background-color 0.3s;
+}
+.hub__dots button[data-on="true"] {
+  width: 28px;
+  background: var(--accent);
+}
+.hub__dots button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }

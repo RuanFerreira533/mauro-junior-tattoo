@@ -83,6 +83,24 @@ export function UniverseHub() {
               ))}
             </ul>
 
+            {!canHover && (
+              <div className="hub__dots" role="group" aria-label="Escolher estilo">
+                {universes.map((u) => (
+                  <button
+                    key={u.slug}
+                    type="button"
+                    data-on={preview === u.slug}
+                    aria-label={u.name}
+                    aria-pressed={preview === u.slug}
+                    onClick={() =>
+                      list.current
+                        ?.querySelector(`li[data-slug="${u.slug}"]`)
+                        ?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" })
+                    }
+                  />
+                ))}
+              </div>
+            )}
             {!canHover && <p className="hub__hint">Deslize para o lado e toque no portal centralizado para entrar.</p>}
           </div>
         </section>
