@@ -56,6 +56,7 @@ export function UniverseHub() {
     <>
       <main id="conteudo" tabIndex={-1}>
         <HubHero />
+        <HubAbout />
 
         <section
           id="estilos"
@@ -87,7 +88,6 @@ export function UniverseHub() {
           </div>
         </section>
 
-        <HubAbout />
         <HubContact />
       </main>
 

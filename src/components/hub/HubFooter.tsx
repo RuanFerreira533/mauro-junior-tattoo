@@ -45,10 +45,10 @@ export function HubFooter() {
               <Link href="/">Início</Link>
             </li>
             <li>
-              <Link href="/#estilos">Estilos</Link>
+              <Link href="/#sobre">Sobre</Link>
             </li>
             <li>
-              <Link href="/#sobre">Sobre</Link>
+              <Link href="/#estilos">Estilos</Link>
             </li>
             <li>
               <Link href="/#contato">Contato</Link>

@@ -33,8 +33,8 @@ export function HubHero() {
           <Mark />
         </Link>
         <nav className="hnav__links" aria-label="Principal">
-          <a href="#estilos">Estilos</a>
           <a href="#sobre">Sobre</a>
+          <a href="#estilos">Estilos</a>
           <a href="#contato">Contato</a>
           <a className="hnav__cta" href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
             Orçamento <Arrow />

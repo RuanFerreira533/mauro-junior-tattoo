@@ -1323,26 +1323,59 @@ button {
   color: var(--ink);
 }
 
-/* ---------- Sobre e Contato (hub) ---------- */
-.habout,
-.hcontact {
-  display: grid;
-  gap: clamp(28px, 5vw, 72px);
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: clamp(56px, 11vh, 130px) clamp(20px, 4vw, 56px);
+/* ---------- Sobre e Contato (hub): faixas de ponta a ponta, mesma linguagem da hero ---------- */
+.band {
+  position: relative;
+  z-index: 2; /* acima da hero: a foto do Sobre invade o fim dela */
   background: var(--base-bg);
   color: var(--ink);
   font-family: var(--font-body);
 }
-.habout {
+.band__in {
+  display: grid;
+  gap: clamp(32px, 6vw, 88px);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(64px, 12vh, 140px) clamp(20px, 4vw, 56px);
+}
+.band__title {
+  position: relative;
+  margin: 0 0 1.4rem;
+  padding-left: clamp(26px, 3vw, 40px);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.band__sq {
+  position: absolute;
+  left: 0;
+  top: 0.14em;
+  width: clamp(14px, 1.8vw, 24px);
+  height: clamp(14px, 1.8vw, 24px);
+  background: var(--accent);
+}
+.band p {
+  max-width: 62ch;
+  margin: 0 0 1rem;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+
+/* Sobre */
+.habout__in {
   grid-template-columns: 1fr;
+  padding-top: 0;
 }
 .habout__photo {
   position: relative;
-  aspect-ratio: 4 / 5;
-  max-width: 520px;
   width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4 / 5;
+  transform: translateY(calc(-1 * clamp(40px, 12vh, 140px)));
+  margin-bottom: calc(-1 * clamp(40px, 12vh, 140px));
 }
 .habout__img {
   object-fit: cover;
@@ -1354,150 +1387,169 @@ button {
   width: 100%;
   height: 100%;
   border: 1px dashed var(--line);
+  background: color-mix(in srgb, var(--ink) 4%, var(--base-bg));
   color: var(--ink2);
   text-align: center;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
 }
 .habout__slot small {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   opacity: 0.8;
 }
 .habout__text {
+  align-self: end;
+  padding-top: clamp(24px, 6vh, 72px);
+}
+.habout__facts {
   display: grid;
-  align-content: center;
-  gap: 1rem;
-  max-width: 38rem;
+  margin: 1.8rem 0 1rem;
+  max-width: 62ch;
 }
-.habout__text p,
-.hcontact__intro p {
-  margin: 0;
-  color: var(--ink2);
-  line-height: 1.7;
+.habout__facts div {
+  display: grid;
+  gap: 0.2rem 1.5rem;
+  grid-template-columns: minmax(7.5rem, 0.35fr) 1fr;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--line);
 }
-.habout__kicker {
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  margin: 0;
+.habout__facts div:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.habout__facts dt {
   color: var(--ink2);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+}
+.habout__facts dd {
+  margin: 0;
+  color: var(--ink);
   font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
 }
-.habout__kicker span {
-  width: 48px;
-  height: 1px;
-  background: var(--ink2);
-}
-.habout__title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 6vw, 4.6rem);
-  font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -0.045em;
-}
-.habout__title em {
-  color: var(--accent);
-  font-style: normal;
-}
-.habout__text .habout__note {
+.band .habout__note {
   font-size: 0.8rem;
   opacity: 0.7;
 }
-.hcontact {
+
+/* Contato */
+.hcontact__in {
   grid-template-columns: 1fr;
   border-top: 1px solid var(--line);
 }
-.hcontact__intro {
-  display: grid;
-  align-content: start;
-  gap: 1rem;
+.hcontact__intro .band__title {
+  max-width: 14ch;
 }
-.hcontact__list {
-  display: grid;
-  gap: 0.8rem;
-  margin: 0.8rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-.hcontact__list li {
-  display: grid;
-  gap: 0.1rem;
-}
-.hcontact__list span {
-  color: var(--ink2);
-  font-size: 0.74rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-.hcontact__list a,
-.hcontact__list b {
+.hcontact__number {
+  display: inline-block;
+  margin: 0.4rem 0 1rem;
   color: var(--ink);
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
   text-decoration: none;
+  border-bottom: 2px solid var(--line);
+  transition:
+    border-color 0.3s,
+    color 0.3s;
 }
-.hcontact__list a:hover {
+.hcontact__number:hover {
   color: var(--accent);
+  border-color: var(--accent);
+}
+.band .hcontact__sub {
+  font-size: 0.95rem;
+}
+.hcontact__sub a {
+  color: var(--ink);
 }
 .hcontact__form {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
+  gap: 1.6rem;
+  align-content: start;
 }
-.hcontact__form label {
+.hfield {
   display: grid;
-  gap: 0.4rem;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
   color: var(--ink2);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.9rem;
 }
-.hcontact__form input,
-.hcontact__form select,
-.hcontact__form textarea {
+.hfield input,
+.hfield textarea {
   width: 100%;
-  padding: 0.85em 1em;
-  border: 1px solid var(--line);
-  border-radius: 2px;
+  padding: 0.6em 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
   background: transparent;
   color: var(--ink);
-  font: 400 1rem/1.4 var(--font-body);
-  letter-spacing: 0;
-  text-transform: none;
+  font: 400 1.15rem/1.4 var(--font-body);
+  resize: vertical;
+  transition: border-color 0.25s;
 }
-.hcontact__form select option {
-  background: var(--base-bg);
+.hfield input::placeholder,
+.hfield textarea::placeholder {
+  color: color-mix(in srgb, var(--ink2) 70%, transparent);
+}
+.hfield input:focus-visible,
+.hfield textarea:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+}
+.hfield legend {
+  margin-bottom: 0.6rem;
+  padding: 0;
+}
+.hchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.hchip {
+  position: relative;
+  cursor: pointer;
+}
+.hchip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.hchip span {
+  display: block;
+  padding: 0.55em 1.1em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
   color: var(--ink);
+  font-size: 0.95rem;
+  transition:
+    background-color 0.25s,
+    border-color 0.25s,
+    color 0.25s;
 }
-.hcontact__form input:focus-visible,
-.hcontact__form select:focus-visible,
-.hcontact__form textarea:focus-visible {
+.hchip:hover span {
+  border-color: var(--ink2);
+}
+.hchip input:checked + span {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.hchip input:focus-visible + span {
   outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 .hcontact__form .hfoot__btn {
   justify-self: start;
   border: 0;
   cursor: pointer;
+  font-family: var(--font-body);
 }
 @media (min-width: 900px) {
-  .habout {
+  .habout__in {
     grid-template-columns: minmax(0, 0.8fr) 1fr;
-    align-items: center;
   }
-  .hcontact {
-    grid-template-columns: 0.9fr 1.1fr;
-  }
-  .hcontact__form {
-    grid-template-columns: 1fr 1fr;
-  }
-  .hcontact__wide {
-    grid-column: 1 / -1;
+  .hcontact__in {
+    grid-template-columns: 0.95fr 1.05fr;
   }
 }
