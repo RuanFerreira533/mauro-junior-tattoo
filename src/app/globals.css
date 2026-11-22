@@ -1519,3 +1519,114 @@ button {
   --accent-ink: #0a0a0b;
   border-top: 0;
 }
+
+/* ---------- Menu do topo: todas as seções no computador, painel de vidro no celular ---------- */
+.hnav__list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.hnav__list a[data-on="true"],
+.hnav__panel a[data-on="true"] {
+  background: rgba(255, 255, 255, 0.17);
+}
+.hnav__burger {
+  display: none;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.75em 1.1em;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #f4f4f2;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.hnav__burger:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.hnav__burger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.hnav__burger svg {
+  transition: rotate 0.4s cubic-bezier(0.34, 1.36, 0.5, 1);
+}
+.hnav__burger svg[data-open="true"] {
+  rotate: 90deg;
+}
+.hnav__panel {
+  display: none;
+}
+@media (min-width: 900px) and (max-width: 1180px) {
+  .hnav__list a {
+    padding: 0.75em 0.85em;
+  }
+}
+@media (max-width: 899px) {
+  .hnav__list {
+    display: none;
+  }
+  .hnav__burger {
+    display: inline-flex;
+  }
+  .hnav__panel {
+    position: absolute;
+    top: calc(100% - 6px);
+    right: clamp(16px, 4vw, 56px);
+    display: grid;
+    gap: 2px;
+    min-width: 230px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 22px;
+    background: rgba(14, 14, 16, 0.82);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    -webkit-backdrop-filter: blur(22px) saturate(1.6);
+    backdrop-filter: blur(22px) saturate(1.6);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.94);
+    transform-origin: top right;
+    transition:
+      opacity 0.25s ease,
+      transform 0.45s cubic-bezier(0.34, 1.36, 0.5, 1),
+      visibility 0s 0.45s;
+  }
+  .hnav__panel[data-open="true"] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition-delay: 0s;
+  }
+  .hnav__panel a {
+    padding: 0.9em 1.1em;
+    border-radius: 14px;
+    color: #f4f4f2;
+    text-decoration: none;
+    opacity: 0;
+    translate: 0 -6px;
+    transition:
+      opacity 0.3s ease,
+      translate 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.3s;
+  }
+  .hnav__panel[data-open="true"] a {
+    opacity: 1;
+    translate: 0 0;
+    transition-delay: calc(0.08s + var(--i) * 45ms), calc(0.08s + var(--i) * 45ms), 0s;
+  }
+  .hnav__panel a:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hnav__panel,
+  .hnav__panel a,
+  .hnav__burger svg {
+    transition: none !important;
+  }
+}

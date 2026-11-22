@@ -1,19 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
-import { whatsappUrl } from "@/lib/contact";
+import { HubNav } from "./HubNav";
 
 // Foto da hero: para trocar, substitua public/hero/hero.jpg (ou mude o caminho aqui).
 const HERO_PHOTO = "/hero/hero.jpg";
-const CONTACT_URL = whatsappUrl("Oi, Mauro! Quero pedir um orçamento.");
 
 const Arrow = ({ down = false }: { down?: boolean }) => (
   <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true" style={down ? { rotate: "90deg" } : undefined}>
     <path d="M3 13L13 3M5 3h8v8" />
   </svg>
 );
-
-/** Logo "M" enviada pelo usuário (PNG branco com transparência, em public/brand/logo-m.png). */
-const Mark = () => <Image src="/brand/logo-m.png" alt="" width={640} height={366} className="hnav__mark" />;
 
 /**
  * Hero do hub: parte fixa, no layout do mockup do usuário (foto em tela cheia, título à esquerda,
@@ -27,20 +22,7 @@ export function HubHero() {
         <span className="hhero__shade" />
       </div>
 
-      <header className="hnav">
-        <Link className="hnav__logo" href="/" aria-label="Mauro Junior, início">
-          <Mark />
-        </Link>
-        <nav className="hnav__links" aria-label="Principal">
-          <a href="#sobre">Sobre</a>
-          <a href="#estilos">Estilos</a>
-          <a href="#contato">Contato</a>
-          <a className="hnav__cta" href={CONTACT_URL} target="_blank" rel="noopener noreferrer">
-            Orçamento <Arrow />
-            <span className="sr-only"> (abre o WhatsApp em nova aba)</span>
-          </a>
-        </nav>
-      </header>
+      <HubNav />
 
       <div className="hhero__body">
         <p className="hhero__name">
