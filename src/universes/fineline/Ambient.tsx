@@ -24,11 +24,6 @@ const heart = (k: number) =>
   "M0 38 C-46 8 -52 -26 -28 -38 C-12 -46 0 -34 0 -22 C0 -34 12 -46 28 -38 C52 -26 46 8 0 38 Z".replace(/-?\d+/g, (n) => String(Number(n) * k));
 
 const LINES: Line[] = [
-  { d: "M-50 620 C250 420 450 820 800 600 S1350 380 1650 520", o: 0.32, t: 22, s: 0 },
-  { d: "M-50 300 C300 120 520 460 860 280 S1300 80 1650 240", o: 0.26, t: 26, s: 7 },
-  { d: "M-50 780 C350 700 600 560 900 740 S1400 860 1650 700", o: 0.22, t: 19, s: 12 },
-  { d: "M-50 450 C200 560 520 240 900 420 S1250 600 1650 380", o: 0.18, t: 30, s: 4 },
-  { d: "M200 -50 C400 300 300 600 700 950", o: 0.14, t: 24, s: 15 },
   // floreios em espiral
   { d: "M300 160 C420 60 560 140 520 240 S360 300 340 220 S440 120 560 170", o: 0.38, t: 16, s: 2 },
   { d: "M1250 760 C1330 660 1460 720 1430 800 S1300 850 1290 790 S1370 700 1450 740", o: 0.38, t: 18, s: 9 },
@@ -41,13 +36,12 @@ const LINES: Line[] = [
   // ondas empilhadas e uma onda com crista enrolada
   { d: wave(800, 34, 260), o: 0.24, t: 20, s: 5 },
   { d: wave(830, 26, 200), o: 0.2, t: 24, s: 11 },
-  { d: wave(860, 18, 160), o: 0.16, t: 28, s: 1 },
   { d: "M-20 880 C60 880 110 830 120 770 C130 700 190 640 260 660 C330 680 340 760 285 785 C245 800 215 765 236 738", o: 0.4, t: 19, s: 8 },
 ];
 
 /**
- * Fine Line: traços finíssimos que se desenham e se apagam pela tela, floreios em espiral, corações, batimento, ondas,
- * círculo que se desenha e estrelinhas. Muito espaço vazio, tudo em 1px.
+ * Fine Line: desenhos em um traço só que se desenham e se apagam pela tela (corações, batimento, ondas e floreios em
+ * espiral), um círculo discreto e estrelinhas. Muito espaço vazio, tudo em 1px.
  */
 export function FinelineAmbient() {
   return (
@@ -65,7 +59,6 @@ export function FinelineAmbient() {
         <svg className="f-ring" viewBox="0 0 400 400" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
           <circle cx="200" cy="200" r="180" pathLength="1" vectorEffect="non-scaling-stroke" />
         </svg>
-        <span className="f-vline" />
       </div>
       <div className="par" style={vars({ "--depth": 26 })}>
         {STARS.map(([x, y, d], i) => (

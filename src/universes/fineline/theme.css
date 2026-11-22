@@ -31,7 +31,7 @@
   aspect-ratio: 1;
   translate: -50% -50%;
   color: var(--ink);
-  opacity: 0.35;
+  opacity: 0.2;
 }
 .f-ring circle {
   stroke-dasharray: 1;
