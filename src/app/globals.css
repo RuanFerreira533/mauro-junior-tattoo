@@ -268,6 +268,8 @@ button {
   list-style: none;
 }
 .portal {
+  --spring: cubic-bezier(0.34, 1.36, 0.5, 1);
+  --folder: color-mix(in srgb, var(--accent) 30%, var(--bg2));
   position: relative;
   display: block;
   width: 100%;
@@ -284,10 +286,10 @@ button {
 }
 .portal:focus-visible {
   outline-offset: 6px;
-  border-radius: 50%;
+  border-radius: 6cqw;
 }
 .portal[data-state="preview"] {
-  transform: translateY(-8px) scale(1.04);
+  transform: translateY(-6px) scale(1.03);
 }
 .portal[data-state="dim"] {
   transform: scale(0.95);
@@ -298,21 +300,80 @@ button {
   transition-duration: 0.45s;
 }
 
-/* arte recortada que rompe o círculo */
-.portal__art {
-  object-fit: contain;
-  transform: scale(1.22); /* compensa a margem transparente da arte */
-  opacity: 0.82; /* opacidade em vez de filter: anima só na GPU */
+/* fundo da pasta, com abinha */
+.portal__back {
+  position: absolute;
+  inset: 24cqw 0 0;
+  border-radius: 0 6cqw 6cqw 6cqw;
+  background: linear-gradient(180deg, var(--folder) 0%, var(--bg) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 3cqw 8cqw rgba(0, 0, 0, 0.45);
+}
+.portal__back::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  width: 36cqw;
+  height: 6cqw;
+  border-radius: 3cqw 5cqw 0 0;
+  background: var(--folder);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+/* arquivos: três trabalhos reais, escondidos atrás do vidro e leque no hover */
+.portal__files {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.portal__sheet {
+  position: absolute;
+  left: 14cqw;
+  top: 58cqw;
+  width: 72cqw;
+  height: 38cqw;
+  overflow: hidden;
+  border-radius: 3cqw;
+  background: var(--bg2);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 2cqw 5cqw rgba(0, 0, 0, 0.5);
+  transform-origin: 50% 100%;
+  transition: transform 0.75s var(--spring) calc(var(--i) * 55ms);
+}
+.portal__sheet img {
+  object-fit: cover;
+}
+.portal[data-state="preview"] .portal__sheet {
+  transform: translate(calc((var(--i) - 1) * 24cqw), -30cqw) rotate(calc((var(--i) - 1) * 11deg));
+}
+
+/* arte recortada de cada estilo (a "logo" do universo) */
+.portal__artbox {
+  position: absolute;
+  left: 12cqw;
+  top: 0;
+  z-index: 3;
+  width: 76cqw;
+  height: 76cqw;
+  pointer-events: none;
+  opacity: 0.88; /* opacidade em vez de filter: anima só na GPU */
   will-change: transform;
   transition:
     transform 0.9s var(--ease),
     opacity 0.6s ease;
 }
-.portal[data-state="preview"] .portal__art {
-  transform: scale(1.28);
+.portal__art {
+  object-fit: contain;
+}
+.portal[data-state="preview"] .portal__artbox {
+  transform: translateY(-5cqw) scale(1.1);
   opacity: 1;
 }
-.portal[data-state="opening"] .portal__art {
+.portal[data-state="opening"] .portal__artbox {
   transform: scale(1.8);
   opacity: 0;
 }
@@ -329,56 +390,65 @@ button {
     0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
-/* texto real sobre o círculo (escala com a largura do portal) */
-.portal__copy {
+/* vidro fosco na frente: inclina para você no hover */
+.portal__front {
   position: absolute;
-  inset: 0 0 auto;
-  top: 46%;
+  inset: auto 0 0;
+  z-index: 4;
   display: grid;
-  justify-items: center;
-  gap: 2.2cqw;
-  text-align: center;
-  pointer-events: none;
-  transition: opacity 0.35s;
+  align-content: end;
+  gap: 1.6cqw;
+  height: 40cqw;
+  padding: 0 6cqw 5.5cqw;
+  border-radius: 5cqw;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.03)),
+    rgba(14, 14, 16, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  transform-origin: 50% 100%;
+  transform: perspective(700px) rotateX(0deg);
+  transition: transform 0.8s var(--spring);
 }
-.portal[data-state="opening"] .portal__copy {
+.portal[data-state="preview"] .portal__front {
+  transform: perspective(700px) rotateX(-12deg);
+}
+.portal[data-state="opening"] .portal__front {
   opacity: 0;
+  transition: opacity 0.3s;
 }
 .portal__jp {
-  display: flex;
-  align-items: center;
-  gap: 2.4cqw;
-  font-size: max(11px, 4.4cqw);
+  position: absolute;
+  top: 4.5cqw;
+  right: 6cqw;
+  color: var(--accent);
+  font-size: max(11px, 4.2cqw);
   font-weight: 500;
   letter-spacing: 0.12em;
 }
-.portal__jp::before,
-.portal__jp::after {
-  content: "";
-  width: 9cqw;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.55);
-}
 .portal__name {
   font-family: var(--f-base), "Helvetica Neue", Arial, sans-serif;
-  font-size: min(15cqw, calc(66cqw / var(--chars, 6)));
+  font-size: min(13cqw, calc(96cqw / var(--chars, 6)));
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.025em;
   text-transform: uppercase;
 }
 .portal__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 2.6cqw;
-  font-size: max(10px, 3.3cqw);
+  font-size: max(10px, 3.4cqw);
   font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.8);
 }
 .portal__go {
+  position: absolute;
+  right: 6cqw;
+  bottom: 5.5cqw;
   display: grid;
-  width: max(26px, 7.4cqw);
+  width: max(28px, 9cqw);
   aspect-ratio: 1;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.75);
@@ -811,9 +881,12 @@ button {
     transition: none;
   }
   .portal[data-state],
-  .portal__art,
+  .portal__artbox,
+  .portal__sheet,
+  .portal__front,
   .btn:hover {
     transform: none !important;
+    transition: none !important;
   }
   .portal {
     transition: opacity 0.3s;
