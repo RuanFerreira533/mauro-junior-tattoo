@@ -53,6 +53,12 @@ export function HubFooter() {
             <li>
               <Link href="/#contato">Contato</Link>
             </li>
+            <li>
+              <Link href="/#avaliacoes">Avaliações</Link>
+            </li>
+            <li>
+              <Link href="/#local">Local</Link>
+            </li>
             {universes.map((u) => (
               <li key={u.slug}>
                 <Link href={`/${u.slug}`}>{u.name}</Link>

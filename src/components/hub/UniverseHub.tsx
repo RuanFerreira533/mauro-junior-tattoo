@@ -10,6 +10,8 @@ import { HubHero } from "./HubHero";
 import { HubFooter } from "./HubFooter";
 import { HubAbout } from "./HubAbout";
 import { HubContact } from "./HubContact";
+import { HubReviews } from "./HubReviews";
+import { HubLocal } from "./HubLocal";
 
 /**
  * Home em três partes independentes:
@@ -85,6 +87,8 @@ export function UniverseHub() {
         </section>
 
         <HubContact />
+        <HubReviews />
+        <HubLocal />
       </main>
 
       <HubFooter />
