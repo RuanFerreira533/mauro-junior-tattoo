@@ -1,0 +1,307 @@
+.wrap {
+  display: grid;
+  gap: clamp(36px, 6vw, 88px);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .wrap {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  }
+}
+
+/* ---------- Lado esquerdo: título, três passos e telefone ---------- */
+.title {
+  margin: 0 0 clamp(28px, 4vw, 44px);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8.4vw, 7rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  color: var(--ink);
+}
+.word {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.14em; /* não corta a cauda de g, ç, q */
+  margin: 0 0.24em -0.14em 0; /* o espaço entre palavras vem daqui: dentro do inline-block ele some */
+  vertical-align: top;
+}
+.word > span {
+  display: inline-block;
+}
+
+.steps {
+  display: grid;
+  gap: 1.3rem;
+  max-width: 34rem;
+  margin: 0 0 clamp(28px, 4vw, 44px);
+  padding: 0;
+  list-style: none;
+}
+.steps li {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+}
+.num {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--accent-ink);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+.steps strong {
+  display: block;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+.wrap .steps p {
+  max-width: 34ch;
+  margin: 0.2rem 0 0;
+  color: var(--ink2);
+  line-height: 1.5;
+}
+
+.wrap .callout {
+  margin: 0 0 0.3rem;
+  color: var(--ink2);
+}
+.phone {
+  position: relative;
+  display: inline-block;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  text-decoration: none;
+}
+.phone::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -0.1em;
+  height: 0.09em;
+  background: var(--ink);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.phone:hover::after {
+  transform: scaleX(0.35);
+}
+.wrap .alt {
+  margin: 1rem 0 0;
+  color: var(--ink2);
+  font-size: 0.95rem;
+}
+.alt a {
+  color: var(--ink);
+}
+
+/* ---------- Ficha de papel ---------- */
+.card {
+  --paper: #fbf6ea;
+  --ink: #16130c;
+  --ink2: #6b6455;
+  --line: rgba(22, 19, 12, 0.3);
+  --accent: #16130c;
+  --accent-ink: #f2a516;
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(28px, 4vw, 44px);
+  background: var(--paper);
+  color: var(--ink);
+  rotate: -1.2deg;
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.06),
+    0 30px 60px -20px rgba(70, 40, 0, 0.55);
+}
+/* fita que prende a ficha */
+.tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 7.5rem;
+  height: 1.7rem;
+  translate: -50% 0;
+  rotate: 2.5deg;
+  background: rgba(22, 19, 12, 0.82);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+.cardTitle {
+  margin: 0.4rem 0 0;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px dashed var(--line);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+.field {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--ink2);
+  font-size: 0.9rem;
+}
+.field legend {
+  margin-bottom: 0.6rem;
+  padding: 0;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.55em 0;
+  border: 0;
+  border-bottom: 1.5px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 400 1.1rem/1.4 var(--font-body);
+  resize: vertical;
+  transition: border-color 0.25s;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(22, 19, 12, 0.38);
+}
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: none;
+  border-color: var(--ink);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chip {
+  position: relative;
+  cursor: pointer;
+}
+.chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.chip span {
+  display: block;
+  padding: 0.5em 1.05em;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  transition:
+    background-color 0.25s,
+    border-color 0.25s,
+    color 0.25s;
+}
+.chip:hover span {
+  border-color: var(--ink);
+}
+.chip input:checked + span {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--accent-ink);
+  animation: c-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.chip input:focus-visible + span {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+@keyframes c-pop {
+  from { scale: 0.88; }
+}
+
+.send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+  padding: 1.1em 1.6em;
+  border: 0;
+  background: var(--ink);
+  color: var(--accent-ink);
+  font: 700 0.95rem var(--font-body);
+  cursor: pointer;
+  transition:
+    translate 0.35s cubic-bezier(0.34, 1.36, 0.5, 1),
+    box-shadow 0.35s;
+}
+.send svg {
+  transition: translate 0.35s cubic-bezier(0.34, 1.36, 0.5, 1);
+}
+.send:hover {
+  translate: 0 -3px;
+  box-shadow: 0 10px 0 -2px rgba(22, 19, 12, 0.25);
+}
+.send:hover svg {
+  translate: 3px -3px;
+}
+.send:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+@media (max-width: 959px) {
+  .card {
+    rotate: 0deg;
+  }
+}
+
+/* ---------- Entradas por rolagem (só onde o navegador suporta; sem suporte tudo fica visível) ---------- */
+@keyframes c-word {
+  from { translate: 0 110%; }
+}
+@keyframes c-step {
+  from { opacity: 0; translate: -36px 0; }
+}
+@keyframes c-card {
+  from { opacity: 0; translate: 0 90px; rotate: 6deg; }
+}
+@supports (animation-timeline: view()) {
+  .word > span {
+    animation: c-word linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+  }
+  .word:nth-child(2) > span { animation-range: entry 8% entry 68%; }
+  .word:nth-child(3) > span { animation-range: entry 16% entry 76%; }
+  .steps li {
+    animation: c-step linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+  .steps li:nth-child(2) { animation-range: entry 10% entry 65%; }
+  .steps li:nth-child(3) { animation-range: entry 20% entry 75%; }
+  .card {
+    animation: c-card linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 75%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .word > span,
+  .steps li,
+  .card,
+  .chip span {
+    animation: none !important;
+  }
+  .send,
+  .send svg,
+  .phone::after {
+    transition: none !important;
+  }
+}
