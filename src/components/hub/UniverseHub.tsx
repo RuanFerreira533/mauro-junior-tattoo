@@ -11,6 +11,7 @@ import { HubFooter } from "./HubFooter";
 import { HubAbout } from "./HubAbout";
 import { HubContact } from "./HubContact";
 import { HubReviews } from "./HubReviews";
+import { HubFaq } from "./HubFaq";
 import { HubLocal } from "./HubLocal";
 
 /**
@@ -88,6 +89,7 @@ export function UniverseHub() {
 
         <HubContact />
         <HubReviews />
+        <HubFaq />
         <HubLocal />
       </main>
 

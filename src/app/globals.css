@@ -1469,7 +1469,8 @@ button {
 @supports (animation-timeline: view()) {
   .habout .band__title,
   .hreviews .band__title,
-  .hlocal .band__title {
+  .hlocal .band__title,
+  .hfaq .band__title {
     animation: a-title linear both;
     animation-timeline: view();
     animation-range: entry 5% entry 70%;
@@ -1478,7 +1479,8 @@ button {
 @media (prefers-reduced-motion: reduce) {
   .habout .band__title,
   .hreviews .band__title,
-  .hlocal .band__title {
+  .hlocal .band__title,
+  .hfaq .band__title {
     animation: none !important;
   }
 }

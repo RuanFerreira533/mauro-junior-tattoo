@@ -57,6 +57,9 @@ export function HubFooter() {
               <Link href="/#avaliacoes">Avaliações</Link>
             </li>
             <li>
+              <Link href="/#perguntas">Perguntas</Link>
+            </li>
+            <li>
               <Link href="/#local">Local</Link>
             </li>
             {universes.map((u) => (

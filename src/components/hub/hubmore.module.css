@@ -246,3 +246,117 @@
     display: none;
   }
 }
+
+/* ---------- Perguntas frequentes ---------- */
+.faqIn {
+  display: grid;
+  gap: clamp(28px, 5vw, 72px);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  border-top: 1px solid var(--line);
+}
+@media (min-width: 900px) {
+  .faqIn {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+  .faqIntro {
+    position: sticky;
+    top: 110px;
+  }
+}
+.faqList {
+  border-bottom: 1px solid var(--line);
+}
+.item {
+  border-top: 1px solid var(--line);
+}
+.item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  list-style: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.item summary::-webkit-details-marker {
+  display: none;
+}
+.item summary:hover {
+  color: var(--accent);
+}
+.item summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+/* mais que vira x quando abre */
+.plus {
+  position: relative;
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: rotate 0.4s cubic-bezier(0.34, 1.36, 0.5, 1);
+}
+.plus::before,
+.plus::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 2px;
+  background: currentColor;
+}
+.plus::after {
+  rotate: 90deg;
+}
+.item[open] .plus {
+  rotate: 135deg;
+  color: var(--accent);
+}
+.item p {
+  max-width: 60ch;
+  margin: 0;
+  padding: 0 2.6rem 1.5rem 0;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+/* abre e fecha com altura animada (onde o navegador suporta) */
+@supports (interpolate-size: allow-keywords) {
+  .item {
+    interpolate-size: allow-keywords;
+  }
+  .item::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      content-visibility 0.45s allow-discrete;
+  }
+  .item[open]::details-content {
+    block-size: auto;
+  }
+}
+
+@keyframes f-item {
+  from { opacity: 0; translate: -30px 0; }
+}
+@supports (animation-timeline: view()) {
+  .item {
+    animation: f-item linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .item::details-content,
+  .plus {
+    animation: none !important;
+    transition: none !important;
+  }
+}
