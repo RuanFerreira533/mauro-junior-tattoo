@@ -624,8 +624,10 @@ button {
 .info h3 {
   margin: 0 0 0.4rem;
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  letter-spacing: var(--title-ls);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  /* nunca menos que 0.08em: fontes de título (como a do Anime) ficam ilegíveis quando apertadas */
+  letter-spacing: max(var(--title-ls), 0.08em);
   text-transform: var(--title-tt);
 }
 .info p {
