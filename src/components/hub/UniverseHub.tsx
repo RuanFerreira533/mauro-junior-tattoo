@@ -88,8 +88,8 @@ export function UniverseHub() {
         </section>
 
         <HubContact />
-        <HubReviews />
         <HubFaq />
+        <HubReviews />
         <HubLocal />
       </main>
 

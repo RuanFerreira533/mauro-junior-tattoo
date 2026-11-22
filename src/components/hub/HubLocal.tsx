@@ -8,13 +8,24 @@ const ROUTE_URL = `https://www.google.com/maps/dir/?api=1&destination=${QUERY}`;
 const MAP_URL = `https://www.google.com/maps?q=${QUERY}&output=embed`;
 
 /**
- * Local: endereço e atendimento vindos do perfil no Google. O horário exato não está publicado
+ * Local: mapa em largura total com um cartão por cima (em telas estreitas, o cartão vem abaixo do mapa).
+ * Endereço e atendimento vêm do perfil no Google. O horário exato não está publicado
  * (só "atendimento mediante agendamento"), então a seção manda combinar pelo WhatsApp.
  */
 export function HubLocal() {
   return (
     <section id="local" className="band hlocal" aria-labelledby="local-titulo">
-      <div className={`band__in ${styles.localIn}`}>
+      <div className={styles.localStage}>
+        <div className={styles.map}>
+          <iframe
+            title="Mapa do estúdio Mauro Jr Tattoo em Santa Isabel, SP"
+            src={MAP_URL}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        </div>
+
         <div className={styles.info}>
           <h2 id="local-titulo" className="band__title">
             <i className="band__sq" aria-hidden="true" />
@@ -39,16 +50,6 @@ export function HubLocal() {
               <span className="sr-only"> (abre o WhatsApp em nova aba)</span>
             </a>
           </div>
-        </div>
-
-        <div className={styles.map}>
-          <iframe
-            title="Mapa do estúdio Mauro Jr Tattoo em Santa Isabel, SP"
-            src={MAP_URL}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
         </div>
       </div>
     </section>

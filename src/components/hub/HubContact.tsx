@@ -33,8 +33,9 @@ export function HubContact() {
         <div className="hcontact__intro">
           <h2 id="contato-titulo" className="band__title">
             <i className="band__sq" aria-hidden="true" />
-            Conte a ideia. A gente desenha junto.
+            Agende seu orçamento
           </h2>
+          <p className="hcontact__lead">Conte a ideia e a gente desenha junto. Eu atendo somente com agendamento.</p>
           <a className="hcontact__number" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
             {WHATSAPP_DISPLAY}
             <span className="sr-only"> (abre o WhatsApp em nova aba)</span>

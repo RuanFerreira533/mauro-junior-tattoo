@@ -54,10 +54,10 @@ export function HubFooter() {
               <Link href="/#contato">Contato</Link>
             </li>
             <li>
-              <Link href="/#avaliacoes">Avaliações</Link>
+              <Link href="/#perguntas">Perguntas</Link>
             </li>
             <li>
-              <Link href="/#perguntas">Perguntas</Link>
+              <Link href="/#avaliacoes">Avaliações</Link>
             </li>
             <li>
               <Link href="/#local">Local</Link>
