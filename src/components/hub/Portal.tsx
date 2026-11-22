@@ -4,15 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import type { MouseEvent } from "react";
 import type { Universe } from "@/universes/types";
-import { ui } from "@/universes/ui";
 import { vars } from "@/lib/css";
 import { useStage } from "@/components/stage/StageProvider";
 import { useCanHover } from "@/lib/useCanHover";
 
 /**
  * Portal de um universo em forma de pasta de vidro (ideia do "glass-folder-cards" do 21st.dev, em CSS puro).
- * Fundo na cor do universo com a arte recortada (sem texto), três trabalhos reais que saem no hover e um painel
- * de vidro fosco na frente com título e "Ver projetos" (texto real). Sem arte, usa o desenho próprio (PortalArt).
+ * Fundo na cor do universo, três trabalhos reais que saem no hover e um painel de vidro fosco na frente
+ * com título e "Ver projetos" (texto real).
  * É um link real: teclado, leitor de tela e abrir em nova aba continuam funcionando.
  * Estados: idle → preview (hover/foco/centralizado) → opening (clique) → véu. Os outros ficam "dim".
  * O portal carrega o próprio data-theme: mantém cor de destaque do seu universo mesmo com outro em preview.
@@ -20,8 +19,6 @@ import { useCanHover } from "@/lib/useCanHover";
 export function Portal({ u, index }: { u: Universe; index: number }) {
   const { preview, entering, previewIntent, previewLeave, enter } = useStage();
   const canHover = useCanHover();
-  const { PortalArt } = ui[u.slug];
-  const art = u.portal?.art;
   // três trabalhos reais saem da pasta no hover
   const files = u.works.flatMap((w) => (w.image.src ? [w.image.src] : [])).slice(0, 3);
 
@@ -50,7 +47,6 @@ export function Portal({ u, index }: { u: Universe; index: number }) {
       className="portal"
       data-theme={u.slug}
       data-state={state}
-      data-art={art ? "image" : "drawn"}
       onClick={onClick}
       onPointerEnter={(e) => mouseLike(e) && previewIntent(u.slug)}
       onPointerLeave={(e) => mouseLike(e) && previewLeave()}
@@ -71,13 +67,6 @@ export function Portal({ u, index }: { u: Universe; index: number }) {
             <Image src={src} alt="" fill sizes="(max-width: 760px) 60vw, 18vw" draggable={false} />
           </span>
         ))}
-      </span>
-      <span className="portal__artbox" aria-hidden="true">
-        {art ? (
-          <Image src={art} alt="" fill sizes="(max-width: 760px) 78vw, 25vw" className="portal__art" draggable={false} />
-        ) : (
-          <span className="portal__scene">{PortalArt && <PortalArt />}</span>
-        )}
       </span>
       <span className="portal__front" aria-hidden="true">
         {u.portal?.jp && <span className="portal__jp">{u.portal.jp}</span>}
